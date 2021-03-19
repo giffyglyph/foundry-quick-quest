@@ -1,0 +1,220 @@
+.gqq-card--item {
+    display: flex;
+    flex-direction: column;
+
+    .item__body {
+        padding: 0;
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    .item__blurb {
+        text-align: center;
+        font-family: 'Open Sans';
+        font-size: 13px;
+        line-height: 1.2;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        overflow-y: auto;
+    }
+
+    .item__description {
+        padding: 0 1rem;
+        margin: 0;
+        width: 100%;
+        text-align: left;
+    }
+
+    .item__description__modifiers {
+        font-size: 1.15rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 0.25rem;
+        border-bottom: 1px solid $card--stars--background;
+        padding-bottom: 0.25rem;
+
+        span:not(:last-child)::after {
+            content: ",";
+        }
+    }
+
+    .item__description__text {
+
+        > *:first-child {
+            margin-top: 0;
+        }
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .item__extras {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin: 0 auto;
+        padding: 0 0 0 1.75rem;
+    }
+
+    .item__extra {
+        border-radius: 1rem;
+        font-family: 'Open Sans';
+        font-size: 18px;
+        height: 2.9rem;
+        width: 4.75rem;
+        position: relative;
+        line-height: 1;
+        flex-shrink: 0;
+        background: white;
+
+        &::before {
+            content: '';
+            height: 100%;
+            width: 100%;
+            border: 3px solid $card--header--background;
+            border-radius: 1rem;
+            top: 0;
+            left: 0;
+            position: absolute;
+            box-sizing: border-box;
+        }
+
+        + * {
+            margin-top: 0.25rem;
+        }
+    }
+
+    .extra__body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        font-weight: bold;
+    }
+
+    .extra__value {
+        position: relative;
+        width: 100%;
+        padding: 0 4px;
+        box-sizing: border-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+        text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+    }
+
+    .extra__title {
+        font-size: 16px;
+        background: $card--header--background;
+        color: white;
+        height: 2rem;
+        width: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: -1.2rem;
+        border-radius: 1rem;
+    }
+
+    .extra__input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        background: white;
+        display: flex;
+        font-weight: bold;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 1rem;
+        border: 3px solid $card--highlight;
+        z-index: 2;
+
+        &:focus {
+            opacity: 1;
+            box-shadow: none;
+        }
+    }
+
+    .item__extra--bulk {
+
+        .extra__title {
+            background: $color-bulk;
+        }
+
+        &::before {
+            border-color: $color-bulk;
+        }
+    }
+
+    .item__extra--value {
+
+        .extra__title {
+            background: $color-value;
+        }
+
+        &::before {
+            border-color: $color-value;
+        }
+    }
+
+    .item__extra--charges {
+
+        .extra__title {
+            background: $color-charges;
+        }
+
+        &::before {
+            border-color: $color-charges;
+        }
+    }
+
+    .item__extra--equipped {
+
+        .extra__title {
+            background: $color-equipped;
+        }
+
+        &::before {
+            border-color: $color-equipped;
+        }
+    }
+
+    .item__extra--equipped:hover {
+        cursor: pointer;
+    }
+
+    .item__back {
+        background: $card--description--background;
+        border-radius: 1rem;
+        padding: 1rem 1rem 1.75rem;
+        overflow-y: auto;
+        font-family: 'Open Sans';
+        position: relative;
+        flex-grow: 1;
+        font-size: 13px;
+        line-height: 1.2;
+    }
+
+    .item__back__text {
+
+        > *:first-child {
+            margin-top: 0;
+        }
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

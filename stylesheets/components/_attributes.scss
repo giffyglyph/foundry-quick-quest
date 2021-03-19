@@ -1,0 +1,173 @@
+$attribute--background: #cacbd1;
+$attribute--value--border--color: #b8bbc3;
+
+.gqq-sheet .attributes,
+.gqq-dialog .attributes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    .attributes__header {
+        font-family: "Londrina Solid";
+        text-transform: uppercase;
+        font-size: 1.25em;
+        display: block;
+        background: black;
+        color: white;
+        width: 100%;
+        text-align: center;
+        border-radius: 1rem;
+    }
+
+    .attributes__body {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.25rem;
+        width: 100%;
+    }
+    
+    .attribute {
+        border-radius: 0 1cm 1cm 0;
+        display: flex;
+        overflow: hidden;
+        background: $attribute--background;
+        width: 100%;
+        position: relative;
+        height: 59px;
+        flex-shrink: 0;
+
+        + * {
+            margin-top: 1px;
+        }
+    
+        &::before {
+            content: '';
+            display: block;
+            height: 200px;
+            width: 200px;
+            background: linear-gradient(90deg, darken($attribute--background, 15%) 0%, rgba($attribute--background, 0) 100%);
+            position: absolute;
+            left: -100px;
+            top: -15px;
+            transform: rotate(45deg);
+        }
+
+        &:first-child {
+            border-top-left-radius: 1rem;
+        }
+
+        &:last-child {
+            border-bottom-left-radius: 1rem;
+        }
+    }
+    
+    .attribute__icon {
+        padding: 5px;
+        margin-right: 10px;
+        border-right: 1px dotted lighten($attribute--background, 10%);
+        position: relative;
+        z-index: 1;
+        box-sizing: border-box;
+        flex-shrink: 0;
+
+        img {
+            filter: drop-shadow(0px 2px 2px rgba(#343d46, 0.5));
+            border: none;
+            border-radius: 0;
+            max-width: 49px;
+            width: 100%;
+        }
+    }
+
+    .attribute__description {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    
+    .attribute__tag {
+        background: none;
+        font-family: inherit;
+        text-align: left;
+        border: none;
+        padding: 0;
+        font-size: 2rem;
+        line-height: 1;
+        position: relative;
+        margin: 0;
+        width: auto;
+        font-family: 'Londrina Solid';
+
+        &:focus,
+        &:hover {
+            color: #6c20a9;
+            outline: none;
+            box-shadow: none;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    
+    .attribute__title {
+        font-size: 0.75em;
+        font-family: "Open Sans";
+        font-weight: bold;
+        text-transform: uppercase;
+        position: relative;
+    }
+    
+    .attribute__value {
+        width: 100%;
+        border: none;
+        height: 59px;
+        width: 59px;
+        border-radius: 100%;
+        border: 3px solid $attribute--value--border--color;
+        text-align: center;
+        font-size: 2em;
+        background: white;
+        z-index: 1;
+        position: absolute;
+        right: 0;
+        top: 0;
+        opacity: 0;
+    
+        &:focus {
+            box-shadow: none;
+            border-color: #6c20a9;
+            opacity: 1;
+        }
+    }
+
+    .attribute__total {
+        width: 100%;
+        border: none;
+        height: 59px;
+        width: 59px;
+        border-radius: 100%;
+        border: 3px solid $attribute--value--border--color;
+        text-align: center;
+        font-size: 2em;
+        background: white;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.attribute__total--higher {
+            color: green;
+        }
+
+        &.attribute__total--lower {
+            color: red;
+        }
+    }
+}
+

@@ -1,0 +1,95 @@
+.gqq-dialog--edit-item {
+
+    .form-group {
+
+        .form-group__header {
+            flex-grow: 1;
+        }
+
+        .form-group__body {
+            flex-grow: 1.5;
+        }
+    }
+
+    .form-group--icon {
+
+        .form-group__body {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .image__icon {
+            background: black;
+            border-radius: 0.5rem;
+            width: 5.48rem;
+            max-height: 5.48rem;
+            overflow: hidden;
+
+            img {
+                border: none;
+                width: 100%;
+            }
+        }
+    }
+
+    .tags,
+    .modifiers {
+        display: flex;
+        flex-direction: column;
+
+        > * + * {
+            margin-top: 1px;
+        }
+
+        > :last-child {
+            margin-bottom: 0.25rem;
+        }
+    }
+
+    .modifiers {
+
+        input {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        select {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-left: 1px solid $dialog--tabs--background;
+
+            &:focus {
+                border-left-color: white;
+            }
+        }
+
+        input,
+        select {
+            flex-grow: 1;
+        }
+    }
+
+    button[data-action="add-tag"],
+    button[data-action="add-modifier"] {
+        background: none;
+        border: 2px solid darken($dialog--tabs--background, 10%);
+        color: darken($dialog--tabs--background, 20%);
+        line-height: 24px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    .form-group--description {
+        flex-grow: 1;
+
+        .form-group__body {
+            height: 100%;
+        }
+
+        textarea {
+            flex-grow: 1;
+            resize: none;
+        }
+    }
+}

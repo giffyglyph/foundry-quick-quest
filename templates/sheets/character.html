@@ -1,0 +1,273 @@
+<div class="gqq-sheet gqq-sheet--character {{cssClass}}">
+    <form class="sheet__body character" autocomplete="off">
+        <nav class="tabs__nav character__nav" data-group="primary">
+            <div class="sheet__logo">
+                <span>Quick</span>
+                <span>Quest</span>
+                <span>{{localize 'sheet.character.title'}}</span>
+            </div>
+            <a class="item active" data-tab="attributes">{{localize 'sheet.character.nav.attributes'}}</a>
+            <a class="item" data-tab="inventory">{{localize 'sheet.character.nav.inventory'}}</a>
+        </nav>
+        <header class="character__header">
+            <div class="character__name">
+                <div class="field field--input">
+                    <label for="name">{{localize 'sheet.character.name'}}</label>
+                    <input name="name" type="text" value="{{actor.name}}" title="{{actor.name}}"/>
+                </div>
+            </div>
+            <div class="character__perks">
+                <div class="field field--input">
+                    <label for="perks">{{localize 'sheet.character.perks'}}</label>
+                    <input name="perks" type="number" value="{{data.perks}}" title="{{data.perks}}"/>
+                </div>
+            </div>
+            <div class="character__ancestry">
+                <div class="field field--input">
+                    <label for="data.ancestry">{{localize 'sheet.character.ancestry'}}</label>
+                    <input name="data.ancestry" type="text" value="{{data.ancestry}}" title="{{data.ancestry}}"/>
+                </div>
+            </div>
+            <div class="character__calling">
+                <div class="field field--input">
+                    <label for="data.calling">{{localize 'sheet.character.calling'}}</label>
+                    <input name="data.calling" type="text" value="{{data.calling}}" title="{{data.calling}}"/>
+                </div>
+            </div>
+        </header>
+        <div class="tabs__body character__body">
+            <div class="tab tab--attributes" data-group="primary" data-tab="attributes">
+                <div class="attributes character__attributes">
+                    <header class="attributes__header">{{localize 'sheet.character.attributes.title'}}</header>
+                    <section class="attributes__body">
+                        {{> "systems/quickquest/templates/partials/character-attribute.html"
+                            code="str"
+                            icon="muscle-up"
+                            base=data.attributes.str.base
+                            sources=data.attributes.str.sources
+                            class=data.attributes.str.class
+                            total=data.attributes.str.total
+                        }}
+                        {{> "systems/quickquest/templates/partials/character-attribute.html"
+                            code="dex"
+                            icon="bullseye"
+                            base=data.attributes.dex.base
+                            sources=data.attributes.dex.sources
+                            class=data.attributes.dex.class
+                            total=data.attributes.dex.total
+                        }}
+                        {{> "systems/quickquest/templates/partials/character-attribute.html"
+                            code="con"
+                            icon="heart-beats"
+                            base=data.attributes.con.base
+                            sources=data.attributes.con.sources
+                            class=data.attributes.con.class
+                            total=data.attributes.con.total
+                        }}
+                        {{> "systems/quickquest/templates/partials/character-attribute.html"
+                            code="int"
+                            icon="brain"
+                            base=data.attributes.int.base
+                            sources=data.attributes.int.sources
+                            class=data.attributes.int.class
+                            total=data.attributes.int.total
+                        }}
+                        {{> "systems/quickquest/templates/partials/character-attribute.html"
+                            code="wis"
+                            icon="light-bulb"
+                            base=data.attributes.wis.base
+                            sources=data.attributes.wis.sources
+                            class=data.attributes.wis.class
+                            total=data.attributes.wis.total
+                        }}
+                        {{> "systems/quickquest/templates/partials/character-attribute.html"
+                            code="cha"
+                            icon="drama-masks"
+                            base=data.attributes.cha.base
+                            sources=data.attributes.cha.sources
+                            class=data.attributes.cha.class
+                            total=data.attributes.cha.total
+                        }}
+                    </section>
+                </div>
+                <div class="attributes character__archetypes">
+                    <header class="attributes__header">{{localize 'sheet.character.archetypes.title'}}</header>
+                    <section class="attributes__body">
+                        {{> "systems/quickquest/templates/partials/character-archetype.html"
+                            code="fig"
+                            icon="sharp-axe"
+                            base=data.archetypes.fig.base
+                            sources=data.archetypes.fig.sources
+                            class=data.archetypes.fig.class
+                            total=data.archetypes.fig.total
+                        }}
+                        {{> "systems/quickquest/templates/partials/character-archetype.html"
+                            code="rog"
+                            icon="lockpicks"
+                            base=data.archetypes.rog.base
+                            sources=data.archetypes.rog.sources
+                            class=data.archetypes.rog.class
+                            total=data.archetypes.rog.total
+                        }}
+                        {{> "systems/quickquest/templates/partials/character-archetype.html"
+                            code="exp"
+                            icon="treasure-map"
+                            base=data.archetypes.exp.base
+                            sources=data.archetypes.exp.sources
+                            class=data.archetypes.exp.class
+                            total=data.archetypes.exp.total
+                        }}
+                        {{> "systems/quickquest/templates/partials/character-archetype.html"
+                            code="sag"
+                            icon="book-cover"
+                            base=data.archetypes.sag.base
+                            sources=data.archetypes.sag.sources
+                            class=data.archetypes.sag.class
+                            total=data.archetypes.sag.total
+                        }}
+                        {{> "systems/quickquest/templates/partials/character-archetype.html"
+                            code="art"
+                            icon="paint-brush"
+                            base=data.archetypes.art.base
+                            sources=data.archetypes.art.sources
+                            class=data.archetypes.art.class
+                            total=data.archetypes.art.total
+                        }}
+                        {{> "systems/quickquest/templates/partials/character-archetype.html"
+                            code="dip"
+                            icon="conversation"
+                            base=data.archetypes.dip.base
+                            sources=data.archetypes.dip.sources
+                            class=data.archetypes.dip.class
+                            total=data.archetypes.dip.total
+                        }}
+                    </section>
+                </div>
+                <div class="fieldset character__resolve">
+                    <header class="fieldset__header">{{localize 'sheet.character.resolve.title'}}</header>
+                    <section class="fieldset__body">
+                        <div class="resolve__used">
+                            <input name="data.resolve.current" type="number" value="{{data.resolve.current}}" min="0" max="{{data.resolve.maximum.total}}">
+                            <span>{{localize 'sheet.character.resolve.current'}}</span>
+                        </div>
+                        <div class="resolve__maximum">
+                            <input name="data.resolve.maximum.base" type="number" value="{{data.resolve.maximum.base}}" title="{{#each data.resolve.maximum.sources as | source id |}}{{source}}{{#unless @last}},&#010;{{/unless}}{{/each}}">
+                            <span class="resolve__maximum__value resolve__maximum__value--{{data.resolve.maximum.class}}">{{data.resolve.maximum.total}}</span>
+                            <span>{{localize 'sheet.character.resolve.maximum'}}</span>
+                        </div>
+                    </section>
+                </div>
+                <div class="fieldset character__appearance">
+                    <header class="fieldset__header">
+                        <label><span>{{localize 'sheet.character.appearance.title'}}</span></label>
+                    </header>
+                    <section class="fieldset__body">
+                        <img src="{{actor.img}}" title="{{actor.name}}" data-edit="img"/>
+                    </section>
+                </div>
+            </div>
+            <div class="tab tab--inventory" data-group="primary" data-tab="inventory">
+                <div class="fieldset character__inventory">
+                    <header class="fieldset__header">
+                        {{localize 'sheet.character.inventory.title'}}
+                    </header>
+                    <section class="fieldset__body">
+                        {{#if items.length}}
+                            <div class="items item-list">
+                                {{#each items as | item id |}}
+                                    <div class="item item--rarity--{{item.data.rarity}} {{#if item.data.isHidden}}item--hidden{{/if}}" data-item-id="{{item._id}}">
+                                        <div class="item__icon">
+                                            <img src="{{item.img}}"/>
+                                            {{#if item.data.canBeEquipped}}
+                                                {{#if item.data.isEquipped}}
+                                                    <span class="item__icon__equipped">E</span>
+                                                {{/if}}
+                                            {{/if}}
+                                        </div>
+                                        <div class="item__description">
+                                            <div class="item__title" title="{{item.name}}">{{item.name}}</div>
+                                            <div class="item__details">
+                                                {{#if item.data.canHaveBulk}}
+                                                    <span class="item__detail item__detail--bulk">
+                                                        <i class="fa fa-weight-hanging"></i>{{#if item.data.bulk}}{{item.data.bulk}}{{else}}0{{/if}}
+                                                    </span>
+                                                {{/if}}
+                                                {{#if item.data.canHaveValue}}
+                                                    <span class="item__detail item__detail--value">
+                                                        <i class="fa fa-coins"></i>{{#if item.data.value}}{{item.data.value}}{{else}}0{{/if}}
+                                                    </span>
+                                                {{/if}}
+                                                {{#if item.data.canHaveCharges}}
+                                                    <span class="item__detail item__detail--charges">
+                                                        <i class="fa fa-bolt"></i>{{#if item.data.charges}}{{item.data.charges}}{{else}}0{{/if}}
+                                                    </span>
+                                                {{/if}}
+                                                {{#if item.data.modifiers.length}}
+                                                    <div class="item__detail item__detail--modifiers">
+                                                        <i class="fa fa-tags"></i>
+                                                        {{#each item.data.modifiers as | modifier id |}}
+                                                            {{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}{{#unless @last}}, {{/unless}}
+                                                        {{/each}}
+                                                    </div>
+                                                {{/if}}
+                                            </div>
+                                        </div>
+                                        <div class="item__actions">
+                                            {{#if item.data.canBeEquipped}}
+                                                <button type="button" class="item__action item__action--toggle-equipped" title="Toggle equipped">
+                                                    <i class="fas fa-hand-paper"></i>
+                                                </button>
+                                            {{/if}}
+                                            <button type="button" class="item__action item__action--toggle-hidden" title="Toggle hidden">
+                                                <i class="fas fa-eye-slash"></i>
+                                            </button>
+                                            <button type="button" class="item__action item__action--edit" title="View">
+                                                <i class="fas fa-book-open"></i>
+                                            </button>
+                                            <button type="button" class="item__action item__action--delete" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        {{/if}}
+                    </section>
+                    <footer class="fieldset__footer inventory__controls">
+                        <div class="inventory__stats">
+                            <div class="inventory__count" title="Items: {{data.totalInventoryVisible}}{{#if data.totalInventoryHidden}} (+{{data.totalInventoryHidden}} hidden){{/if}}">
+                                <i class="fa fa-list"></i>{{data.totalInventoryVisible}}
+                            </div>
+                            <div class="inventory__equipped" title="Equipped: {{data.totalInventoryEquipped}}">
+                                <i class="fa fa-hand-paper"></i>{{data.totalInventoryEquipped}}
+                            </div>
+                            <div class="inventory__bulk" title="Bulk: {{data.totalInventoryBulk}}">
+                                <i class="fa fa-weight-hanging"></i>{{data.totalInventoryBulk}}
+                            </div>
+                            <div class="inventory__value" title="Value: {{data.totalInventoryValue}}">
+                                <i class="fa fa-coins"></i>{{data.totalInventoryValue}}
+                            </div>
+                        </div>
+                        <button type="button" class="item__action item__action--add">
+                            <i class="fas fa-plus-circle"></i> {{localize 'sheet.character.inventory.actions.add'}}
+                        </button>
+                    </footer>
+                </div>
+                <div class="fieldset character__inventory-misc">
+                    <header class="fieldset__header">
+                        {{localize 'sheet.character.inventory-misc.title'}}
+                    </header>
+                    <section class="fieldset__body">
+                        <textarea name="data.misc.inventory">{{data.misc.inventory}}</textarea>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="sheet__footer">
+        <div class="sheet__id">
+            <span class="id">{{actor._id}}</span>
+            <span class="name">Quick Quest</span>
+        </div>
+    </div>
+</div>

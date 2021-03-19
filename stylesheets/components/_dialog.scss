@@ -1,0 +1,322 @@
+$dialog--background: #131313;
+$dialog--body--background: white;
+$dialog--tabs--background: #e2e2e2;
+$dialog--highlight: #6c20a9;
+$dialog--title--background: #a9a9a9;
+$dialog--button--background: #666666;
+$dialog--well--background: #e2e2e2;
+
+.gqq-dialog {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: $dialog--background;
+    position: relative;
+    font-family: 'Open Sans';
+
+    .dialog__title {
+        background: $dialog--title--background;
+        padding: 0.5rem 1.5rem 1.5rem;
+        border-radius: 1rem 1rem 0 0;
+        font-size: 1.6rem;
+        font-family: 'Londrina Solid';
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex-shrink: 0;
+        position: relative;
+
+        + * {
+            margin-top: -1rem !important;
+        }
+
+        + .dialog__tabs__nav {
+            background: $dialog--title--background;
+        }
+    }
+
+    .dialog__body {
+        flex-grow: 1;
+        padding: 0.25rem;
+        background: white;
+        border-radius: 1rem;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            height: calc(100% - 0.5rem);
+            width: calc(100% - 0.5rem);
+            background: $dialog--body--background;
+            border-radius: 2rem;
+        }
+    }
+
+    .dialog__footer {
+        margin-top: 0.5rem;
+    }
+
+    .dialog__buttons {
+        display: flex;
+        padding-bottom: 5px;
+
+        button {
+            background: $dialog--button--background;
+            font-family: inherit;
+            font-size: larger;
+            color: white;
+            font-weight: bold;
+            border-radius: 0.75rem;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0;
+            box-shadow: 0 5px 0 0 darken($dialog--button--background, 10%);
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            + button {
+                margin-left: 0.25rem;
+            }
+
+            &:focus,
+            &:hover,
+            &:active {
+                background: $dialog--highlight;
+                color: white;
+                border-color: $dialog--highlight;
+                text-shadow: none;
+                box-shadow: 0 5px 0 0 darken($dialog--highlight, 10%);
+            }
+
+            &:active {
+                box-shadow: 0 2px 0 0 darken($dialog--highlight, 10%);
+                transform: translateY(3px);
+            }
+        }
+
+        .btn-primary {
+            background: lighten($dialog--button--background, 10%);
+            box-shadow: 0 5px 0 0 darken($dialog--button--background, 0%);
+        }
+    }
+
+    .form-group {
+        margin: 0;
+        padding: 0;
+        align-items: flex-start;
+
+        + .form-group {
+            border-top: 1px dotted darken($dialog--tabs--background, 10%);
+            margin-top: 0.25rem;
+            padding-top: 0.25rem;
+        }
+
+        .form-group__header {
+            flex-shrink: 0;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .form-group__body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input,
+        select {
+            background: white;
+            border: none;
+            height: auto;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            width: 100%;
+            font-family: inherit;
+            font-size: inherit;
+
+            &:focus {
+                box-shadow: 0 0 0 3px $dialog--highlight;
+                position: relative;
+                z-index: 1;
+            }
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            margin-left: 0;
+            cursor: pointer;
+        }
+
+        textarea {
+            background: white;
+            border: none;
+            height: auto;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            resize: vertical;
+            font-family: inherit;
+            font-size: inherit;
+            border: 3px solid white;
+
+            &:focus {
+                box-shadow: none;
+                outline: none;
+                border-color: $dialog--highlight;
+            }
+        }
+
+        button {
+            background: button;
+            font-weight: bold;
+            font-family: inherit;
+            border: none;
+            margin: 0;
+            border-radius: 0.5rem;
+            background: #c0c5ce;
+
+            &:focus,
+            &:hover {
+                background: $dialog--highlight;
+                color: white;
+                border-color: $dialog--highlight;
+                text-shadow: none;
+                box-shadow: none;
+            }
+        }
+    }
+
+    .input-group {
+        display: flex;
+
+        button {
+            background: darken($dialog--tabs--background, 20%);
+            border: 0;
+            margin: 0;
+            border-radius: 0;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .input-group-prepend {
+
+            input[type="checkbox"] {
+                margin-left: 0;
+                width: 20px;
+                height: 20px;
+                padding: 0;
+            }
+        }
+
+        .input-group-append {
+            display: flex;
+            margin-left: 0.25rem;
+
+            button {
+                border: 2px solid darken($dialog--tabs--background, 10%);
+                border-radius: 1rem;
+                line-height: 21px;
+                width: 28px;
+                color: darken($dialog--tabs--background, 20%);
+                background: none;
+
+                &:focus,
+                &:hover {
+                    background: $dialog--highlight;
+                    color: white;
+                    border-color: $dialog--highlight;
+                    text-shadow: none;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+    .dialog__tabs__nav {
+        display: flex;
+        position: relative;
+        margin-top: 0.25rem;
+
+        button {
+            background: darken($dialog--tabs--background, 10%);
+            border: none;
+            margin: 0;
+            border-radius: 0.75rem 0.75rem 0 0;
+            padding: 0.5rem;
+            display: inline-block;
+            font-weight: bolder;
+            font-family: 'Open Sans';
+            font-weight: 500;
+
+            &:not(:last-child) {
+                margin-right: 4px;
+            }
+
+            &:hover {
+                text-shadow: none;
+                cursor: pointer;
+            }
+
+            &:focus,
+            &:hover,
+            &.active {
+                background: $dialog--tabs--background;
+                text-shadow: none;
+                box-shadow: none;
+            }
+        }
+    }
+
+    .dialog__tabs__body {
+        display: flex;
+        flex-grow: 1;
+        overflow: hidden;
+        position: relative;
+
+        .tab {
+            flex-grow: 1;
+            overflow: hidden;
+            background: $dialog--tabs--background;
+            padding: 1rem;
+            border-radius: 0 0 0.75rem 0.75rem;
+            overflow-y: auto;
+            
+            &.active {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+
+    .dialog__well {
+        background: $dialog--well--background;
+        border-radius: 1rem;
+        padding: 1rem;
+        position: relative;
+        flex-grow: 1;
+        margin-top: 0.25rem;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background: $dialog--highlight;
+        border: none;
+    }
+
+    ::-webkit-scrollbar-track {
+        box-shadow: 0 0 0 1px #eaebee inset;
+        border-radius: 1rem;
+    }
+}

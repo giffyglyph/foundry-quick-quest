@@ -1,0 +1,91 @@
+{
+  "Actor": {
+    "types": ["character"],
+    "templates": {
+      "common": {
+        "attributes": {
+          "str": {
+            "base": 0
+          },
+          "dex": {
+            "base": 0
+          },
+          "con": {
+            "base": 0
+          },
+          "int": {
+            "base": 0
+          },
+          "wis": {
+            "base": 0
+          },
+          "cha": {
+            "base": 0
+          }
+        },
+        "archetypes": {
+          "fig": {
+            "base": 0
+          },
+          "rog": {
+            "base": 0
+          },
+          "exp": {
+            "base": 0
+          },
+          "sag": {
+            "base": 0
+          },
+          "art": {
+            "base": 0
+          },
+          "dip": {
+            "base": 0
+          }
+        }
+      }
+    },
+    "character": {
+      "templates": ["common"],
+      "ancestry": null,
+      "calling": null,
+      "resolve": {
+        "current": 10,
+        "maximum": {
+          "base": 10
+        }
+      },
+      "misc": {
+        "inventory": null
+      },
+      "htmlFields": ["misc.inventory"]
+    }
+  },
+  "Item": {
+    "types": ["item"],
+    "templates": {
+      "item": {
+        "descriptions": {
+          "simple": null,
+          "expanded": null
+        },
+        "canBeEquipped": false,
+        "isEquipped": false,
+        "isHidden": false,
+        "canHaveCharges": false,
+        "charges": 1,
+        "canHaveBulk": true,
+        "bulk": 1,
+        "canHaveValue": true,
+        "value": 10,
+        "modifiers": [],
+        "rarity": "common",
+        "tags": []
+      }
+    },
+    "htmlFields": ["descriptions.simple", "descriptions.expanded"],
+    "item": {
+      "templates": ["item"]
+    }
+  }
+}

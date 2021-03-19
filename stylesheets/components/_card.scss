@@ -1,0 +1,576 @@
+$card--background: #131313;
+$card--body--background: #d2d8e4;
+$card--nav--background: #515358;
+$card--footer--color: white;
+$card--highlight: #6c20a9;
+$card--header--background: #97a1b7;
+$card--stars--background: #b5bbcb;
+$card--description--background: white;
+
+$card--uncommon--body--background: #b1ea90;
+$card--uncommon--header--background: #57c324;
+$card--uncommon--stars--background: #83d565;
+
+$card--rare--body--background: #9bdfff;
+$card--rare--header--background: #37acff;
+$card--rare--stars--background: #77c1ff;
+
+$card--epic--body--background: #cbc8ff;
+$card--epic--header--background: #8f81ff;
+$card--epic--stars--background: #b9a1ff;
+
+$card--legendary--body--background: #fed39a;
+$card--legendary--header--background: #e39932;
+$card--legendary--stars--background: #e5b76c;
+
+.gqq-card {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: $card--background;
+    position: relative;
+
+    .card__body {
+        flex-grow: 1;
+        padding: 0.25rem;
+        background: white;
+        border-radius: 1rem;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            height: calc(100% - 0.5rem);
+            width: calc(100% - 0.5rem);
+            background: $card--body--background;
+            border-radius: 2rem;
+        }
+    }
+
+    .card__title {
+        background: $card--header--background;
+        padding: 0.5rem 1.5rem;
+        border-radius: 1rem;
+        font-size: 1.6rem;
+        font-family: 'Londrina Solid';
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex-shrink: 0;
+        position: relative;
+
+        &::before,
+        &::after {
+            content: '';
+            background: darken($card--header--background, 10%);
+            height: 10px;
+            width: 10px;
+            position: absolute;
+            border-radius: 1rem;
+            display: block;
+            top: calc(50% - 5px);
+        }
+
+        &::before {
+            left: 0.5rem;
+        }
+
+        &::after {
+            right: 0.5rem;
+        }
+    }
+
+    .card__rarity {
+        color: black;
+        background: $card--stars--background;
+        color: darken($card--header--background, 20%);
+        text-align: center;
+        width: 210px;
+        margin: 0 auto;
+        font-size: 20px;
+        position: relative;
+        padding: 0.125rem 0;
+        border-radius: 0 0 2rem 2rem;
+        min-height: 1.8rem;
+
+        i {
+            display: none;
+        }
+    }
+
+    .card__image {
+        width: 150px;
+        margin: 0 auto;
+        display: flex;
+        position: relative;
+        z-index: 2;
+        background: linear-gradient(to bottom, $card--stars--background, $card--body--background);
+        padding: 0.5rem;
+        border-radius: 1rem;
+
+        img {
+            border: none;
+            border-radius: 1rem;
+            margin: 0;
+            width: 100%;
+            background: black;
+        }
+    }
+
+    .card__tags {
+        background: $card--body--background;
+        border-radius: 1rem;
+        padding: 0.35rem 1.75rem;
+        width: 17rem;
+        margin: 0.5rem auto -1.5rem;
+        text-align: center;
+        position: relative;
+        font-family: 'Open Sans';
+        font-weight: bold;
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex-shrink: 0;
+        z-index: 2;
+        letter-spacing: -0.25px;
+        height: 2rem;
+
+        &::before,
+        &::after {
+            content: '';
+            background: darken($card--body--background, 10%);
+            height: 10px;
+            width: 10px;
+            position: absolute;
+            border-radius: 1rem;
+            display: block;
+            top: calc(50% - 5px);
+        }
+
+        &::before {
+            left: 0.5rem;
+        }
+
+        &::after {
+            right: 0.5rem;
+        }
+
+        + .card__details {
+            padding-top: 1.75rem;
+        }
+    }
+
+    .card__tag {
+
+        &:not(:last-child)::after {
+            content: ",";
+        }
+    }
+
+    .card__details {
+        background: $card--description--background;
+        border-radius: 1rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        overflow: hidden;
+        padding: 0;
+        margin-top: 0.5rem;
+        padding: 1rem 0 1.75rem;
+    }
+
+    .card__tab {
+        padding: 0.5rem;
+    
+        &::before {
+            content: '';
+            height: 22rem;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, $card--stars--background, darken($card--stars--background, 10%));
+            border-radius: 3rem 3rem 0 0;
+        }
+    }
+
+    .card__tabs__nav {
+        text-align: center;
+
+        button {
+            color: white;
+            background: $card--nav--background;
+            border: none;
+            margin: 0;
+            border-radius: 1rem;
+            padding: 0 0.5rem;
+            font-size: smaller;
+            display: inline-block;
+            height: 1.2rem;
+            width: 1.2rem;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bolder;
+
+            > :last-child {
+                margin-right: 0;
+            }
+
+            &:hover {
+                text-shadow: none;
+                cursor: pointer;
+            }
+
+            &:focus,
+            &:hover,
+            &.active {
+                background: white;
+                color: $card--nav--background;
+                text-shadow: none;
+                box-shadow: none;
+            }
+        }
+    }
+
+    .card__tabs__body {
+        display: flex;
+        flex-grow: 1;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .card__tab {
+        flex-grow: 1;
+        overflow: hidden;
+        display: none;
+        
+        &.active {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .card__type {
+        position: relative;
+        background: darken($card--stars--background, 10%);
+        height: 1.75rem;
+        min-width: 8rem;
+        margin: -1.75rem auto 0;
+        padding: 0 1rem;
+        border-radius: 1rem 1rem 0 0;
+        text-align: center;
+        font-family: 'Open Sans';
+        text-transform: uppercase;
+        font-weight: bold;
+        color: white;
+        font-size: smaller;
+        line-height: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid white;
+        box-sizing: border-box;
+        border-bottom-width: 0;
+        flex-shrink: 0;
+        flex-grow: 0;
+        z-index: 1;
+    }
+
+    .card__footer {
+        margin-top: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .card__id {
+        font-family: 'Open Sans';
+        color: $card--footer--color;
+        text-transform: uppercase;
+        font-weight: bold;
+
+        span {
+            display: flex;
+            align-items: center;
+
+            &::before {
+                content: '';
+                background: rgba($card--footer--color, 0.5);
+                width: 6px;
+                display: inline-block;
+                height: 6px;
+                border-radius: 1rem;
+                margin-right: 0.4rem;
+            }
+        }
+
+        .id {
+            font-size: 12px;
+            line-height: 11px;
+        }
+
+        .name {
+            font-size: 8px;
+            line-height: 9px;
+        }
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background: $card--highlight;
+        border: none;
+    }
+
+    ::-webkit-scrollbar-track {
+        box-shadow: 0 0 0 1px #eaebee inset;
+        border-radius: 1rem;
+    }
+}
+
+.gqq-card--rarity--common {
+
+    .card__rarity i {
+
+        &:nth-child(1) {
+            display: inline-block;
+        }
+    }
+}
+
+.gqq-card--rarity--uncommon {
+
+    .card__rarity i {
+
+        &:nth-child(1),
+        &:nth-child(2) {
+            display: inline-block;
+        }
+    }
+}
+
+.gqq-card--rarity--rare {
+
+    .card__rarity i {
+
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-child(3) {
+            display: inline-block;
+        }
+    }
+}
+
+.gqq-card--rarity--epic {
+
+    .card__rarity i {
+
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-child(3),
+        &:nth-child(4) {
+            display: inline-block;
+        }
+    }
+}
+
+.gqq-card--rarity--legendary {
+
+    .card__rarity i {
+
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-child(3),
+        &:nth-child(4),
+        &:nth-child(5) {
+            display: inline-block;
+        }
+    }
+}
+
+.gqq-card--rarity--uncommon {
+
+    .card__body::before {
+        background: $card--uncommon--body--background;
+    }
+
+    .card__title {
+        background: $card--uncommon--header--background;
+
+        &::before,
+        &::after {
+            background: darken($card--uncommon--header--background, 10%);
+        }
+    }
+
+    .card__rarity {
+        background: $card--uncommon--stars--background;
+        color: darken($card--uncommon--header--background, 20%);
+    }
+
+    .card__image {
+        background: linear-gradient(to bottom, $card--uncommon--stars--background, $card--uncommon--body--background);
+    }
+
+    .card__tags {
+        background: $card--uncommon--body--background;
+
+        &::before,
+        &::after {
+            background: darken($card--uncommon--body--background, 10%);
+        }
+    }
+
+    .card__tab {
+    
+        &::before {
+            background: linear-gradient(to bottom, $card--uncommon--stars--background, darken($card--uncommon--stars--background, 10%));
+        }
+    }
+
+    .card__type {
+        background: darken($card--uncommon--stars--background, 10%);
+    }
+}
+
+.gqq-card--rarity--rare {
+
+    .card__body::before {
+        background: $card--rare--body--background;
+    }
+
+    .card__title {
+        background: $card--rare--header--background;
+
+        &::before,
+        &::after {
+            background: darken($card--rare--header--background, 10%);
+        }
+    }
+
+    .card__rarity {
+        background: $card--rare--stars--background;
+        color: darken($card--rare--header--background, 20%);
+    }
+
+    .card__image {
+        background: linear-gradient(to bottom, $card--rare--stars--background, $card--rare--body--background);
+    }
+
+    .card__tags {
+        background: $card--rare--body--background;
+
+        &::before,
+        &::after {
+            background: darken($card--rare--body--background, 10%);
+        }
+    }
+
+    .card__tab {
+    
+        &::before {
+            background: linear-gradient(to bottom, $card--rare--stars--background, darken($card--rare--stars--background, 10%));
+        }
+    }
+
+    .card__type {
+        background: darken($card--rare--stars--background, 10%);
+    }
+}
+
+.gqq-card--rarity--epic {
+
+    .card__body::before {
+        background: $card--epic--body--background;
+    }
+
+    .card__title {
+        background: $card--epic--header--background;
+
+        &::before,
+        &::after {
+            background: darken($card--epic--header--background, 10%);
+        }
+    }
+
+    .card__rarity {
+        background: $card--epic--stars--background;
+        color: darken($card--epic--header--background, 20%);
+    }
+
+    .card__image {
+        background: linear-gradient(to bottom, $card--epic--stars--background, $card--epic--body--background);
+    }
+
+    .card__tags {
+        background: $card--epic--body--background;
+
+        &::before,
+        &::after {
+            background: darken($card--epic--body--background, 10%);
+        }
+    }
+
+    .card__tab {
+    
+        &::before {
+            background: linear-gradient(to bottom, $card--epic--stars--background, darken($card--epic--stars--background, 10%));
+        }
+    }
+
+    .card__type {
+        background: darken($card--epic--stars--background, 10%);
+    }
+}
+
+.gqq-card--rarity--legendary {
+
+    .card__body::before {
+        background: $card--legendary--body--background;
+    }
+
+    .card__title {
+        background: $card--legendary--header--background;
+
+        &::before,
+        &::after {
+            background: darken($card--legendary--header--background, 10%);
+        }
+    }
+
+    .card__rarity {
+        background: $card--legendary--stars--background;
+        color: darken($card--legendary--header--background, 20%);
+    }
+
+    .card__image {
+        background: linear-gradient(to bottom, $card--legendary--stars--background, $card--legendary--body--background);
+    }
+
+    .card__tags {
+        background: $card--legendary--body--background;
+
+        &::before,
+        &::after {
+            background: darken($card--legendary--body--background, 10%);
+        }
+    }
+
+    .card__tab {
+    
+        &::before {
+            background: linear-gradient(to bottom, $card--legendary--stars--background, darken($card--legendary--stars--background, 10%));
+        }
+    }
+
+    .card__type {
+        background: darken($card--legendary--stars--background, 10%);
+    }
+}

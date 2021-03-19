@@ -1,0 +1,154 @@
+.gqq-dialog--character-roll {
+
+    .roll__attributes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 0.5rem;
+
+        .attribute {
+            height: 38px;
+            background: darken($dialog--well--background, 10%);
+
+            .attribute__tag {
+                font-size: 1.5rem;
+            }
+
+            .attribute__value {
+                border-color: darken($dialog--well--background, 10%);
+                opacity: 1;
+            }
+
+            &::before {
+                left: -115px;
+                background: linear-gradient(90deg, darken($dialog--well--background, 30%) 0%, darken($dialog--well--background, 10%) 100%);
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &.active {
+                background: lighten($dialog--highlight, 20%);
+
+                &::before {
+                    background: linear-gradient(90deg, lighten($dialog--highlight, 0%) 0%, lighten($dialog--highlight, 20%) 100%);
+                }
+
+                .attribute__value {
+                    border-color: lighten($dialog--highlight, 20%);
+                }
+
+                .attribute__tag {
+                    color: white;
+                }
+            }
+
+            input[type="radio"] {
+                display: none;
+
+                &:checked ~ .attribute__value {
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 1.5rem;
+
+                    &::before {
+                        content: "\f00c";
+                        font-family: "Font Awesome 5 Free";
+                        font-weight: 900;
+                        color: green;
+                        -webkit-font-smoothing: antialiased;
+                        display: inline-block;
+                        font-style: normal;
+                        font-variant: normal;
+                        text-rendering: auto;
+                        line-height: 1;
+                    }
+                }
+            }
+
+            .attribute__icon img {
+                max-width: 28px;
+            }
+
+            .attribute__value {
+                height: 38px;
+                width: 38px;
+                display: flex;
+            }
+
+            .attribute__tag {
+                color: inherit;
+            }
+        }
+    }
+
+    .roll__options {
+        border: 1px solid rgba($dialog--button--background, 0.25);
+        border-radius: 1rem;
+        padding: 0.75rem;
+        margin-top: 0.5rem;
+        align-items: center;
+
+        label {
+            font-weight: bold;
+            line-height: 27px;
+        }
+    }
+
+    .roll__advantage {
+        display: flex;
+
+        label {
+            background: #666666;
+            text-align: center;
+            color: white;
+            font-family: 'Londrina Solid';
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: larger;
+            padding: 0.125rem 0.5rem;
+            display: block;
+            margin-right: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 30px;
+            font-weight: 400;
+            
+            &:first-of-type {
+                border-top-left-radius: 0.5rem;
+                border-bottom-left-radius: 0.5rem;
+            }
+
+            &:last-of-type {
+                border-top-right-radius: 0.5rem;
+                border-bottom-right-radius: 0.5rem;
+                margin-right: 0;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        input {
+            display: none;
+
+            &:checked + label {
+                background: $dialog--highlight;
+            }
+        }
+    }
+
+    .dialog__buttons {
+
+        .btn-advantage,
+        .btn-disadvantage {
+            font-size: small;
+        }
+
+        .btn-roll {
+            font-size: large;
+        }
+    }
+}

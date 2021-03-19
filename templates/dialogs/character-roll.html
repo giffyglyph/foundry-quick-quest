@@ -1,0 +1,162 @@
+<form id="character-roll" class="gqq-dialog gqq-dialog--character-roll" onsubmit="event.preventDefault();">
+    <div class="dialog__body">
+        <div class="dialog__title">Make a Roll</div>
+        <div class="dialog__well">
+            <div class="form-group roll__attributes">
+                <div class="attributes character__attributes">
+                    <header class="attributes__header">Attribute</header>
+                    <section class="attributes__body">
+                        <div class="attribute {{#if preselectStr}}active{{/if}}">
+                            <input type="radio" name="attribute" value="str" {{#if preselectStr}}checked{{/if}}>
+                            <div class="attribute__icon">
+                                <img src="systems/quickquest/images/icons/muscle-up.svg">
+                            </div>
+                            <div class="attribute__description">
+                                <span class="attribute__tag">{{localize 'common.str.code'}}</span>
+                            </div>
+                            <div class="attribute__value"></div>
+                        </div>
+                        <div class="attribute {{#if preselectDex}}active{{/if}}">
+                            <input type="radio" name="attribute" value="dex" {{#if preselectDex}}checked{{/if}}>
+                            <div class="attribute__icon">
+                                <img src="systems/quickquest/images/icons/bullseye.svg">
+                            </div>
+                            <div class="attribute__description">
+                                <span class="attribute__tag">{{localize 'common.dex.code'}}</span>
+                            </div>
+                            <div class="attribute__value"></div>
+                        </div>
+                        <div class="attribute {{#if preselectCon}}active{{/if}}">
+                            <input type="radio" name="attribute" value="con" {{#if preselectCon}}checked{{/if}}>
+                            <div class="attribute__icon">
+                                <img src="systems/quickquest/images/icons/heart-beats.svg">
+                            </div>
+                            <div class="attribute__description">
+                                <span class="attribute__tag">{{localize 'common.con.code'}}</span>
+                            </div>
+                            <div class="attribute__value"></div>
+                        </div>
+                        <div class="attribute {{#if preselectInt}}active{{/if}}">
+                            <input type="radio" name="attribute" value="int" {{#if preselectInt}}checked{{/if}}>
+                            <div class="attribute__icon">
+                                <img src="systems/quickquest/images/icons/brain.svg">
+                            </div>
+                            <div class="attribute__description">
+                                <span class="attribute__tag">{{localize 'common.int.code'}}</span>
+                            </div>
+                            <div class="attribute__value"></div>
+                        </div>
+                        <div class="attribute {{#if preselectWis}}active{{/if}}">
+                            <input type="radio" name="attribute" value="wis" {{#if preselectWis}}checked{{/if}}>
+                            <div class="attribute__icon">
+                                <img src="systems/quickquest/images/icons/light-bulb.svg">
+                            </div>
+                            <div class="attribute__description">
+                                <span class="attribute__tag">{{localize 'common.wis.code'}}</span>
+                            </div>
+                            <div class="attribute__value"></div>
+                        </div>
+                        <div class="attribute {{#if preselectCha}}active{{/if}}">
+                            <input type="radio" name="attribute" value="cha" {{#if preselectCha}}checked{{/if}}>
+                            <div class="attribute__icon">
+                                <img src="systems/quickquest/images/icons/drama-masks.svg">
+                            </div>
+                            <div class="attribute__description">
+                                <span class="attribute__tag">{{localize 'common.cha.code'}}</span>
+                            </div>
+                            <div class="attribute__value"></div>
+                        </div>
+                    </section>
+                </div>
+                <div class="attributes character__archetypes">
+                    <header class="attributes__header">Archetype</header>
+                    <section class="attributes__body">
+                        <div class="attribute {{#if preselectFig}}active{{/if}}">
+                            <input type="radio" name="archetype" value="fig" {{#if preselectFig}}checked{{/if}}>
+                            <div class="attribute__icon">
+                                <img src="systems/quickquest/images/icons/sharp-axe.svg">
+                            </div>
+                            <div class="attribute__description">
+                                <span class="attribute__tag">{{localize 'common.fig.code'}}</span>
+                            </div>
+                            <div class="attribute__value"></div>
+                        </div>
+                        <div class="attribute {{#if preselectRog}}active{{/if}}">
+                            <input type="radio" name="archetype" value="rog" {{#if preselectRog}}checked{{/if}}>
+                            <div class="attribute__icon">
+                                <img src="systems/quickquest/images/icons/lockpicks.svg">
+                            </div>
+                            <div class="attribute__description">
+                                <span class="attribute__tag">{{localize 'common.rog.code'}}</span>
+                            </div>
+                            <div class="attribute__value"></div>
+                        </div>
+                        <div class="attribute {{#if preselectExp}}active{{/if}}">
+                            <input type="radio" name="archetype" value="exp" {{#if preselectExp}}checked{{/if}}>
+                            <div class="attribute__icon">
+                                <img src="systems/quickquest/images/icons/treasure-map.svg">
+                            </div>
+                            <div class="attribute__description">
+                                <span class="attribute__tag">{{localize 'common.exp.code'}}</span>
+                            </div>
+                            <div class="attribute__value"></div>
+                        </div>
+                        <div class="attribute {{#if preselectSag}}active{{/if}}">
+                            <input type="radio" name="archetype" value="sag" {{#if preselectSag}}checked{{/if}}>
+                            <div class="attribute__icon">
+                                <img src="systems/quickquest/images/icons/book-cover.svg">
+                            </div>
+                            <div class="attribute__description">
+                                <span class="attribute__tag">{{localize 'common.sag.code'}}</span>
+                            </div>
+                            <div class="attribute__value"></div>
+                        </div>
+                        <div class="attribute {{#if preselectArt}}active{{/if}}">
+                            <input type="radio" name="archetype" value="art" {{#if preselectArt}}checked{{/if}}>
+                            <div class="attribute__icon">
+                                <img src="systems/quickquest/images/icons/paint-brush.svg">
+                            </div>
+                            <div class="attribute__description">
+                                <span class="attribute__tag">{{localize 'common.art.code'}}</span>
+                            </div>
+                            <div class="attribute__value"></div>
+                        </div>
+                        <div class="attribute {{#if preselectDip}}active{{/if}}">
+                            <input type="radio" name="archetype" value="dip" {{#if preselectDip}}checked{{/if}}>
+                            <div class="attribute__icon">
+                                <img src="systems/quickquest/images/icons/conversation.svg">
+                            </div>
+                            <div class="attribute__description">
+                                <span class="attribute__tag">{{localize 'common.dip.code'}}</span>
+                            </div>
+                            <div class="attribute__value"></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="roll__options">
+                <div class="form-group">
+                    <label>Bonus</label>
+                    <input name="bonus" type="text" placeholder="e.g. +1d4"/>
+                </div>
+                <div class="form-group">
+                    <label>Roll Mode</label>
+                    <select name="mode">
+                        <option value="roll" selected="">Public Roll</option>
+                        <option value="gmroll">Private GM Roll</option>
+                        <option value="blindroll">Blind GM Roll</option>
+                        <option value="selfroll">Self Roll</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialog__footer">
+        <div class="dialog__buttons dialog-buttons">
+            {{#each buttons as |button id|}}
+                <button class="dialog__button dialog-button {{button.class}}" data-button="{{id}}" title="{{button.label}}">{{{button.icon}}} {{{button.label}}}</button>
+            {{/each}}
+        </div>
+    </div>
+</form>
+ 

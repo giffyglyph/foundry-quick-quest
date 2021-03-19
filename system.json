@@ -1,0 +1,29 @@
+{
+  "name": "quickquest",
+  "title": "Giffyglyph's Quick Quest",
+  "description": "Fast rpg rules in the Foundry Virtual Tabletop environment.",
+  "version": "1.0.0",
+  "author": "Giffyglyph",
+  "scripts": [],
+  "esmodules": ["qq.js"],
+  "styles": ["qq.css"],
+  "packs": [
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "socket": true,
+  "gridDistance": 5,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "attributes.hp",
+  "secondaryTokenAttribute": null,
+  "minimumCoreVersion": "0.7.6",
+  "compatibleCoreVersion": "0.7.9",
+  "url": "",
+  "manifest": "",
+  "download": ""
+}

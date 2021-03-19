@@ -1,0 +1,100 @@
+$sheet--background: #131313;
+$sheet--body--background: white;
+$sheet--footer--color: white;
+$sheet--highlight: #6c20a9;
+
+.gqq-sheet {
+    font-family: 'Londrina Solid';
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 100%;
+    background: $sheet--background;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    overflow: hidden;
+
+    .sheet__logo {
+        color: black;
+        font-family: "Londrina Solid";
+        text-transform: uppercase;
+        font-size: 2.25em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        line-height: 0.8;
+        text-align: center;
+        margin-bottom: 2rem;
+
+        span:first-of-type {
+            letter-spacing: 1.5px;
+        }
+
+        span:last-of-type {
+            display: block;
+            background: black;
+            color: white;
+            text-align: center;
+            font-size: 0.5em;
+            padding-top: 0.125rem;
+            padding-bottom: 0.125rem;
+            font-weight: 300;
+            border-radius: 0.25rem;
+        }
+    }
+
+    .sheet__body {
+        flex-grow: 1;
+        padding: 0.25rem;
+        background: $sheet--body--background;
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    .sheet__footer {
+        margin-top: 0.5rem;
+    }
+
+    .sheet__id {
+        font-family: 'Open Sans';
+        color: $sheet--footer--color;
+        text-transform: uppercase;
+        font-weight: bold;
+
+        span {
+            display: flex;
+            align-items: center;
+
+            &::before {
+                content: '';
+                background: rgba($sheet--footer--color, 0.5);
+                width: 6px;
+                display: inline-block;
+                height: 6px;
+                border-radius: 1rem;
+                margin-right: 0.4rem;
+            }
+        }
+
+        .id {
+            font-size: 12px;
+            line-height: 11px;
+        }
+
+        .name {
+            font-size: 8px;
+            line-height: 9px;
+        }
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background: $sheet--highlight;
+        border: none;
+    }
+
+    ::-webkit-scrollbar-track {
+        box-shadow: 0 0 0 1px #eaebee inset;
+        border-radius: 1rem;
+    }
+}

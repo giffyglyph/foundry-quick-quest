@@ -1,0 +1,102 @@
+<div class="gqq-card gqq-card--rarity--{{data.rarity}} gqq-card--item {{cssClass}}">
+    <form class="card__body" autocomplete="off">
+        <div class="card__title" title="{{item.name}}">{{item.name}}</div>
+        <div class="card__rarity" title="{{localize (concat 'item.rarity.' data.rarity)}}">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <div class="card__tabs__body item__body">
+            <div class="card__tab item__tab--front" data-group="primary" data-tab="front">
+                <div class="card__image">
+                    <img src="{{item.img}}" title="{{item.name}}" data-edit="img"/>
+                </div>
+                <div class="card__tags" title="{{#each data.tags as | tag id |}}{{tag}}{{#unless @last}}, {{/unless}}{{/each}}">
+                    {{#each data.tags as | tag id |}}
+                        <span class="card__tag">{{tag}}</span>
+                    {{/each}}
+                </div>
+                <div class="card__details">
+                    {{#if data.showExtras}}
+                        <div class="item__extras">
+                            {{#if data.canHaveBulk}}
+                                <div class="item__extra item__extra--bulk" title="Bulk: {{data.bulk}}">
+                                    <input class="extra__input" type="number" name="data.bulk" value="{{data.bulk}}"/>
+                                    <span class="extra__body">
+                                        <span class="extra__title"><i class="fa fa-fw fa-weight-hanging"></i></span>
+                                        <span class="extra__value">{{#if data.bulk}}{{data.bulk}}{{else}}0{{/if}}</span>
+                                    </span>
+                                </div>
+                            {{/if}}
+                            {{#if data.canHaveValue}}
+                                <div class="item__extra item__extra--value" title="Value: {{data.value}}">
+                                    <input class="extra__input" type="number" name="data.value" value="{{data.value}}"/>
+                                    <span class="extra__body">
+                                        <span class="extra__title"><i class="fa fa-fw fa-coins"></i></span>
+                                        <span class="extra__value">{{#if data.value}}{{data.value}}{{else}}0{{/if}}</span>
+                                    </span>
+                                </div>
+                            {{/if}}
+                            {{#if data.canHaveCharges}}
+                                <div class="item__extra item__extra--charges" title="Charges: {{data.charges}}">
+                                    <input class="extra__input" type="number" name="data.charges" value="{{data.charges}}"/>
+                                    <span class="extra__body">
+                                        <span class="extra__title"><i class="fa fa-fw fa-bolt"></i></span>
+                                        <span class="extra__value">{{#if data.charges}}{{data.charges}}{{else}}0{{/if}}</span>
+                                    </span>
+                                </div>
+                            {{/if}}
+                            {{#if data.canBeEquipped}}
+                                <div class="item__extra item__extra--equipped" title="{{#if data.isEquipped}}Equipped{{else}}Unequipped{{/if}}">
+                                    <span class="extra__body">
+                                        <span class="extra__title"><i class="fa fa-fw fa-hand-paper"></i></span>
+                                        <span class="extra__value">{{#if data.isEquipped}}E{{else}}&nbsp;{{/if}}</span>
+                                    </span>
+                                </div>
+                            {{/if}}
+                        </div>
+                    {{/if}}
+                    <div class="item__blurb">
+                        <div class="item__description">
+                            {{#if data.modifiers.length}}
+                                <div class="item__description__modifiers">
+                                    {{#each data.modifiers as | modifier id |}}
+                                        <span class="item__description__modifier">
+                                            {{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}
+                                        </span>
+                                    {{/each}}
+                                </div>
+                            {{/if}}
+                            <div class="item__description__text">{{{data.descriptions.simple}}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{#if data.descriptions.expanded}}
+                <div class="card__tab item__tab--back" data-group="primary" data-tab="back">
+                    <div class="item__back">
+                        <div class="item__back__text">
+                            {{{data.descriptions.expanded}}}
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+        <div class="card__type">Item</div>
+    </form>
+    <div class="card__footer">
+        <div class="card__id">
+            <span class="id">{{item._id}}</span>
+            <span class="name">Quick Quest</span>
+        </div>
+        <nav class="card__tabs__nav" data-group="primary">
+            <button type="button" class="active" data-tab="front">{{localize 'sheet.item.nav.front'}}</button>
+            {{#if data.descriptions.expanded}}
+                <button type="button" data-tab="back">{{localize 'sheet.item.nav.back'}}</button>
+            {{/if}}
+            <button type="button" data-action="edit"><i class="fas fa-edit"></i></button>
+        </nav>
+    </div>
+</div>

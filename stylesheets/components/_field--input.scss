@@ -1,0 +1,37 @@
+.gqq-sheet .field--input {
+    position: relative;
+    font-size: 1.5em;
+    line-height: 2rem;
+    display: flex;
+
+    label {
+        color: black;
+        font-family: $font-title;
+        padding: 0 0.5rem;
+        text-transform: uppercase;
+        background: #a7adba;
+        color: black;
+        font-size: 0.85rem;
+        padding: 0 1.5rem 0 1rem;
+        letter-spacing: 0.5px;
+        border-radius: 1rem 0 0 1rem;
+    }
+
+    input {
+        background: none;
+        border: none;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0;
+        height: auto;
+        text-overflow: ellipsis;
+        background: white;
+        border-radius: 1rem;
+        padding: 0 1rem;
+        margin-left: -1rem;
+
+        &:focus {
+            box-shadow: 0 0 0 3px #6c20a9;
+        }
+    }
+}
