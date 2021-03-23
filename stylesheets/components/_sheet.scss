@@ -25,6 +25,7 @@ $sheet--highlight: #6c20a9;
         line-height: 0.8;
         text-align: center;
         margin-bottom: 2rem;
+        line-height: 0.9;
 
         span:first-of-type {
             letter-spacing: 1.5px;
@@ -56,7 +57,7 @@ $sheet--highlight: #6c20a9;
     }
 
     .sheet__id {
-        font-family: 'Open Sans';
+        font-family: 'Source Sans Pro';
         color: $sheet--footer--color;
         text-transform: uppercase;
         font-weight: bold;

@@ -67,7 +67,9 @@
       "item": {
         "descriptions": {
           "simple": null,
-          "expanded": null
+          "simpleFlavor": null,
+          "expanded": null,
+          "expandedFlavor": null
         },
         "canBeEquipped": false,
         "isEquipped": false,
@@ -83,7 +85,7 @@
         "tags": []
       }
     },
-    "htmlFields": ["descriptions.simple", "descriptions.expanded"],
+    "htmlFields": ["descriptions.simple", "descriptions.simpleFlavor", "descriptions.expanded", "descriptions.expandedFlavor"],
     "item": {
       "templates": ["item"]
     }

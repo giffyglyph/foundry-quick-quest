@@ -1,7 +1,7 @@
 <div class="gqq-card gqq-card--rarity--{{data.rarity}} gqq-card--item {{cssClass}}">
     <form class="card__body" autocomplete="off">
         <div class="card__title" title="{{item.name}}">{{item.name}}</div>
-        <div class="card__rarity" title="{{localize (concat 'item.rarity.' data.rarity)}}">
+        <div class="card__rarity" title="{{localize (concat 'common.rarities.' data.rarity)}}">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -11,65 +11,63 @@
         <div class="card__tabs__body item__body">
             <div class="card__tab item__tab--front" data-group="primary" data-tab="front">
                 <div class="card__image">
-                    <img src="{{item.img}}" title="{{item.name}}" data-edit="img"/>
-                </div>
-                <div class="card__tags" title="{{#each data.tags as | tag id |}}{{tag}}{{#unless @last}}, {{/unless}}{{/each}}">
-                    {{#each data.tags as | tag id |}}
-                        <span class="card__tag">{{tag}}</span>
-                    {{/each}}
-                </div>
-                <div class="card__details">
-                    {{#if data.showExtras}}
-                        <div class="item__extras">
-                            {{#if data.canHaveBulk}}
-                                <div class="item__extra item__extra--bulk" title="Bulk: {{data.bulk}}">
-                                    <input class="extra__input" type="number" name="data.bulk" value="{{data.bulk}}"/>
-                                    <span class="extra__body">
-                                        <span class="extra__title"><i class="fa fa-fw fa-weight-hanging"></i></span>
-                                        <span class="extra__value">{{#if data.bulk}}{{data.bulk}}{{else}}0{{/if}}</span>
-                                    </span>
-                                </div>
-                            {{/if}}
-                            {{#if data.canHaveValue}}
-                                <div class="item__extra item__extra--value" title="Value: {{data.value}}">
-                                    <input class="extra__input" type="number" name="data.value" value="{{data.value}}"/>
-                                    <span class="extra__body">
-                                        <span class="extra__title"><i class="fa fa-fw fa-coins"></i></span>
-                                        <span class="extra__value">{{#if data.value}}{{data.value}}{{else}}0{{/if}}</span>
-                                    </span>
-                                </div>
-                            {{/if}}
-                            {{#if data.canHaveCharges}}
-                                <div class="item__extra item__extra--charges" title="Charges: {{data.charges}}">
-                                    <input class="extra__input" type="number" name="data.charges" value="{{data.charges}}"/>
-                                    <span class="extra__body">
-                                        <span class="extra__title"><i class="fa fa-fw fa-bolt"></i></span>
-                                        <span class="extra__value">{{#if data.charges}}{{data.charges}}{{else}}0{{/if}}</span>
-                                    </span>
-                                </div>
-                            {{/if}}
-                            {{#if data.canBeEquipped}}
-                                <div class="item__extra item__extra--equipped" title="{{#if data.isEquipped}}Equipped{{else}}Unequipped{{/if}}">
-                                    <span class="extra__body">
-                                        <span class="extra__title"><i class="fa fa-fw fa-hand-paper"></i></span>
-                                        <span class="extra__value">{{#if data.isEquipped}}E{{else}}&nbsp;{{/if}}</span>
-                                    </span>
-                                </div>
-                            {{/if}}
+                    <img src="{{item.img}}" data-edit="img"/>
+                    {{#if data.canBeEquipped}}
+                        <div class="item__equipped {{#if data.isEquipped}}equipped{{/if}}" title="{{#if data.isEquipped}}Equipped{{else}}Unequipped{{/if}}">
+                            <i class="fas fa-shield-alt"></i>
                         </div>
                     {{/if}}
-                    <div class="item__blurb">
-                        <div class="item__description">
-                            {{#if data.modifiers.length}}
-                                <div class="item__description__modifiers">
-                                    {{#each data.modifiers as | modifier id |}}
-                                        <span class="item__description__modifier">
-                                            {{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}
-                                        </span>
-                                    {{/each}}
-                                </div>
+                </div>
+                <div class="card__tags" title="{{#each data.tags as | tag id |}}{{tag}}{{#unless @last}}, {{/unless}}{{/each}}">
+                    {{#if data.tags}}
+                        {{#each data.tags as | tag id |}}
+                            <span class="card__tag">{{tag}}</span>
+                        {{/each}}
+                    {{else}}
+                        &nbsp;
+                    {{/if}}
+                </div>
+                <div class="card__details">
+                    {{#if data.modifiers.length}}
+                        <div class="item__modifiers">
+                            {{#each data.modifiers as | modifier id |}}
+                                <span class="item__modifier">
+                                    {{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}
+                                </span>
+                            {{/each}}
+                        </div>
+                    {{/if}}
+                    <div class="item__description">
+                        {{#if data.showExtras}}
+                            <div class="item__extras">
+                                {{#if data.canHaveBulk}}
+                                    <div class="item__extra item__extra--bulk" title="Bulk: {{data.bulk}}">
+                                        <span class="extra__icon"><i class="fa fa-fw fa-weight-hanging"></i></span>
+                                        <span class="extra__value">{{#if data.bulk}}{{data.bulk}}{{else}}0{{/if}}</span>
+                                        <input class="extra__input" type="number" name="data.bulk" value="{{data.bulk}}"/>
+                                    </div>
+                                {{/if}}
+                                {{#if data.canHaveValue}}
+                                    <div class="item__extra item__extra--value length-{{strlen data.value}}" title="Value: {{data.value}}">
+                                        <span class="extra__icon"><i class="fa fa-fw fa-coins"></i></span>
+                                        <span class="extra__value">{{#if data.value}}{{data.value}}{{else}}0{{/if}}</span>
+                                        <input class="extra__input" type="number" name="data.value" value="{{data.value}}"/>
+                                    </div>
+                                {{/if}}
+                                {{#if data.canHaveCharges}}
+                                    <div class="item__extra item__extra--charges" title="Charges: {{data.charges}}">
+                                        <span class="extra__icon"><i class="fa fa-fw fa-bolt"></i></span>
+                                        <span class="extra__value">{{#if data.charges}}{{data.charges}}{{else}}0{{/if}}</span>
+                                        <input class="extra__input" type="number" name="data.charges" value="{{data.charges}}"/>
+                                    </div>
+                                {{/if}}
+                            </div>
+                        {{/if}}
+                        <div class="item__blurb">
+                            <div class="item__blurb__text">{{{data.descriptions.simple}}}</div>
+                            {{#if data.descriptions.simpleFlavor}}
+                                <div class="item__blurb__flavor">{{{data.descriptions.simpleFlavor}}}</div>
                             {{/if}}
-                            <div class="item__description__text">{{{data.descriptions.simple}}}</div>
                         </div>
                     </div>
                 </div>
@@ -77,8 +75,13 @@
             {{#if data.descriptions.expanded}}
                 <div class="card__tab item__tab--back" data-group="primary" data-tab="back">
                     <div class="item__back">
-                        <div class="item__back__text">
-                            {{{data.descriptions.expanded}}}
+                        <div class="item__blurb">
+                            <div class="item__blurb__text">
+                                {{{data.descriptions.expanded}}}
+                            </div>
+                            {{#if data.descriptions.simpleFlavor}}
+                                <div class="item__blurb__flavor">{{{data.descriptions.simpleFlavor}}}</div>
+                            {{/if}}
                         </div>
                     </div>
                 </div>

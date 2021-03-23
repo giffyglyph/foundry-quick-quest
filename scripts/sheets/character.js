@@ -23,7 +23,8 @@ export default class ActorSheetCharacter extends ActorSheet {
 			html.find('.item__action--add').click(this._onItemAdd.bind(this));
 			html.find('.item__action--toggle-equipped').click(this._onItemToggleEquipped.bind(this));
 			html.find('.item__action--toggle-hidden').click(this._onItemToggleHidden.bind(this));
-			html.find('.item .item__icon img, .item .item__title, .item__action--edit').click(this._onItemEdit.bind(this));
+			html.find('.item .item__icon img, .item__action--edit').click(this._onItemEdit.bind(this));
+			html.find('.item .item__title input, .item .item__bulk input, .item .item__value input, .item .item__charges input').change(this._onItemChange.bind(this));
 			html.find('.item__action--delete').click(this._onItemDelete.bind(this));
 			html.find('.attributes .attribute__tag').click(this._onMakeRoll.bind(this));
 		}
@@ -35,7 +36,7 @@ export default class ActorSheetCharacter extends ActorSheet {
 		const header = event.currentTarget;
 		const type = "item";
 		const itemData = {
-			name: game.i18n.format("sheet.character.inventory.new.item"),
+			name: game.i18n.format("item.new.title"),
 			img: DEFAULT_TOKEN,
 			type: type,
 			data: duplicate(header.dataset)
@@ -59,6 +60,17 @@ export default class ActorSheetCharacter extends ActorSheet {
 		const item = this.actor.getOwnedItem(li.dataset.itemId);
 		item.update({
 			"data.isHidden": !item.data.data.isHidden
+		});
+	}
+
+	_onItemChange(event) {
+		event.preventDefault();
+		const field = event.currentTarget.getAttribute("data-field");
+		const value = event.currentTarget.value;
+		const li = event.currentTarget.closest(".item");
+		const item = this.actor.getOwnedItem(li.dataset.itemId);
+		item.update({
+			[field]: value
 		});
 	}
 

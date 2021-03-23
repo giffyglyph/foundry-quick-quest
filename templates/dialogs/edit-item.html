@@ -1,21 +1,21 @@
 <form id="edit-item" class="gqq-dialog gqq-dialog--edit-item" onsubmit="event.preventDefault();">
     <div class="dialog__body">
-        <div class="dialog__title">Edit Item</div>
+        <div class="dialog__title">{{localize 'dialog.edit_item.title'}}</div>
         <nav class="dialog__tabs__nav" data-group="primary">
-            <button type="button" data-tab="core" class="active">Core</button>
-            <button type="button" data-tab="description">Description</button>
-            <button type="button" data-tab="extra">Extra Details</button>
+            <button type="button" data-tab="core" class="active">{{localize 'dialog.edit_item.tab.core'}}</button>
+            <button type="button" data-tab="description">{{localize 'dialog.edit_item.tab.description'}}</button>
+            <button type="button" data-tab="extra">{{localize 'dialog.edit_item.tab.extra'}}</button>
         </nav>
         <div class="dialog__tabs__body">
             <div class="tab tab--core" data-group="primary" data-tab="core">
                 <div class="form-group">
-                    <label class="form-group__header"><i class="fa fa-fw fa-signature"></i> Name</label>
+                    <label class="form-group__header"><i class="fa fa-fw fa-signature"></i> {{localize 'common.name'}}</label>
                     <div class="form-group__body">
                         <input name="name" type="text" value="{{item.name}}"/>
                     </div>
                 </div>
                 <div class="form-group form-group--icon">
-                    <label class="form-group__header"><i class="fa fa-fw fa-image"></i> Image</label>
+                    <label class="form-group__header"><i class="fa fa-fw fa-image"></i> {{localize 'common.image'}}</label>
                     <div class="form-group__body">
                         <div class="image__icon">
                             <input name="img" type="hidden" value="{{item.img}}"/>
@@ -24,21 +24,21 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-group__header"><i class="fa fa-fw fa-star"></i> Rarity</label>
+                    <label class="form-group__header"><i class="fa fa-fw fa-star"></i> {{localize 'common.rarity'}}</label>
                     <div class="form-group__body">
                         <select name="data.rarity">
                             {{#select item.data.rarity}}
-                                <option value="common">{{localize 'item.rarity.common'}}</option>
-                                <option value="uncommon">{{localize 'item.rarity.uncommon'}}</option>
-                                <option value="rare">{{localize 'item.rarity.rare'}}</option>
-                                <option value="epic">{{localize 'item.rarity.epic'}}</option>
-                                <option value="legendary">{{localize 'item.rarity.legendary'}}</option>
+                                <option value="common">{{localize 'common.rarities.common'}}</option>
+                                <option value="uncommon">{{localize 'common.rarities.uncommon'}}</option>
+                                <option value="rare">{{localize 'common.rarities.rare'}}</option>
+                                <option value="epic">{{localize 'common.rarities.epic'}}</option>
+                                <option value="legendary">{{localize 'common.rarities.legendary'}}</option>
                             {{/select}}
                         </select>
                     </div>
                 </div>
                 <div class="form-group form-group--tags">
-                    <label class="form-group__header"><i class="fa fa-fw fa-tags"></i> Tags</label>
+                    <label class="form-group__header"><i class="fa fa-fw fa-tags"></i> {{localize 'common.tags'}}</label>
                     <div class="form-group__body">
                         <div class="tags">
                             {{#each item.data.tags as | tag id |}}
@@ -52,11 +52,11 @@
                                 </div>
                             {{/each}}
                         </div>
-                        <button type="button" data-action="add-tag"><i class="fas fa-plus-circle"></i> Add a tag</button>
+                        <button type="button" data-action="add-tag"><i class="fas fa-plus-circle"></i> {{localize 'dialog.edit_item.add_tag'}}</button>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-group__header"><i class="fa fa-fw fa-weight-hanging"></i> Bulk</label>
+                    <label class="form-group__header"><i class="fa fa-fw fa-weight-hanging"></i> {{localize 'common.bulk'}}</label>
                     <div class="form-group__body">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-group__header"><i class="fa fa-fw fa-coins"></i> Value</label>
+                    <label class="form-group__header"><i class="fa fa-fw fa-coins"></i> {{localize 'common.value'}}</label>
                     <div class="form-group__body">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-group__header"><i class="fa fa-fw fa-bolt"></i> Charges</label>
+                    <label class="form-group__header"><i class="fa fa-fw fa-bolt"></i> {{localize 'common.charges'}}</label>
                     <div class="form-group__body">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-group__header"><i class="fa fa-fw fa-hand-paper"></i> Equippable</label>
+                    <label class="form-group__header"><i class="fa fa-fw fa-hand-paper"></i> {{localize 'common.equippable'}}</label>
                     <div class="form-group__body">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -101,7 +101,7 @@
             </div>
             <div class="tab tab--description" data-group="primary" data-tab="description">
                 <div class="form-group form-group--modifiers">
-                    <label class="form-group__header"><i class="fa fa-fw fa-tags"></i> Modifiers</label>
+                    <label class="form-group__header"><i class="fa fa-fw fa-tags"></i> {{localize 'common.modifiers'}}</label>
                     <div class="form-group__body">
                         <div class="modifiers">
                             {{#each item.data.modifiers as | modifier id |}}
@@ -109,24 +109,24 @@
                                     <input name="data.modifiers[].value" type="number" value="{{modifier.value}}"/>
                                     <select name="data.modifiers[].type">
                                         {{#select modifier.type}}
-                                            <optgroup label="Attributes">
-                                                <option value="str">STR</option>
-                                                <option value="dex">DEX</option>
-                                                <option value="con">CON</option>
-                                                <option value="int">INT</option>
-                                                <option value="wis">WIS</option>
-                                                <option value="cha">CHA</option>
+                                            <optgroup label="{{localize 'common.attributes'}}">
+                                                <option value="str">{{localize 'common.str.code'}}</option>
+                                                <option value="dex">{{localize 'common.dex.code'}}</option>
+                                                <option value="con">{{localize 'common.con.code'}}</option>
+                                                <option value="int">{{localize 'common.int.code'}}</option>
+                                                <option value="wis">{{localize 'common.wis.code'}}</option>
+                                                <option value="cha">{{localize 'common.cha.code'}}</option>
                                             </optgroup>
-                                            <optgroup label="Attributes">
-                                                <option value="fig">FIG</option>
-                                                <option value="rog">ROG</option>
-                                                <option value="exp">EXP</option>
-                                                <option value="sag">SAG</option>
-                                                <option value="art">ART</option>
-                                                <option value="dip">DIP</option>
+                                            <optgroup label="{{localize 'common.archetypes'}}">
+                                                <option value="fig">{{localize 'common.fig.code'}}</option>
+                                                <option value="rog">{{localize 'common.rog.code'}}</option>
+                                                <option value="exp">{{localize 'common.exp.code'}}</option>
+                                                <option value="sag">{{localize 'common.sag.code'}}</option>
+                                                <option value="art">{{localize 'common.art.code'}}</option>
+                                                <option value="dip">{{localize 'common.dip.code'}}</option>
                                             </optgroup>
-                                            <optgroup label="Other">
-                                                <option value="res">RES</option>
+                                            <optgroup label="{{localize 'common.miscellaneous'}}">
+                                                <option value="res">{{localize 'common.res.code'}}</option>
                                             </optgroup>
                                         {{/select}}
                                     </select>
@@ -138,19 +138,33 @@
                                 </div>
                             {{/each}}
                         </div>
-                        <button type="button" data-action="add-modifier"><i class="fas fa-plus-circle"></i> Add a modifier</button>
+                        <button type="button" data-action="add-modifier"><i class="fas fa-plus-circle"></i> {{localize 'dialog.edit_item.add_modifier'}}</button>
                     </div>
                 </div>
-                <div class="form-group form-group--description">
+                <div class="form-group form-group--column form-group--description">
+                    <label class="form-group__header"><i class="fa fa-fw fa-sticky-note"></i> {{localize 'dialog.edit_item.description'}}</label>
                     <div class="form-group__body">
                         <textarea name="data.descriptions.simple" rows="10">{{item.data.descriptions.simple}}</textarea>
                     </div>
                 </div>
+                <div class="form-group form-group--column">
+                    <label class="form-group__header"><i class="fa fa-fw fa-quote-left"></i> {{localize 'dialog.edit_item.flavor'}}</label>
+                    <div class="form-group__body">
+                        <textarea name="data.descriptions.simpleFlavor" rows="4">{{item.data.descriptions.simpleFlavor}}</textarea>
+                    </div>
+                </div>
             </div>
             <div class="tab tab--extra" data-group="primary" data-tab="extra">
-                <div class="form-group form-group--description">
+                <div class="form-group form-group--column form-group--description">
+                    <label class="form-group__header"><i class="fa fa-fw fa-sticky-note"></i> {{localize 'dialog.edit_item.description'}}</label>
                     <div class="form-group__body">
                         <textarea name="data.descriptions.expanded" rows="10">{{item.data.descriptions.expanded}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group form-group--column">
+                    <label class="form-group__header"><i class="fa fa-fw fa-quote-left"></i> {{localize 'dialog.edit_item.flavor'}}</label>
+                    <div class="form-group__body">
+                        <textarea name="data.descriptions.expandedFlavor" rows="4">{{item.data.descriptions.expandedFlavor}}</textarea>
                     </div>
                 </div>
             </div>
@@ -159,7 +173,7 @@
     <div class="dialog__footer">
         <div class="dialog__buttons dialog-buttons">
             {{#each buttons as |button id|}}
-                <button class="dialog__button dialog-button" data-button="{{id}}">{{{button.icon}}} {{{button.label}}}</button>
+                <button class="dialog__button dialog-button {{button.class}}" data-button="{{id}}">{{{button.icon}}} {{{button.label}}}</button>
             {{/each}}
         </div>
     </div>

@@ -116,11 +116,12 @@ $attribute--value--border--color: #b8bbc3;
     }
     
     .attribute__title {
-        font-size: 0.75em;
-        font-family: "Open Sans";
+        font-size: 12px;
+        font-family: "Source Sans Pro";
         font-weight: bold;
         text-transform: uppercase;
         position: relative;
+        line-height: 1;
     }
     
     .attribute__value {

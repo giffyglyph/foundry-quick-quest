@@ -67,15 +67,15 @@ export default class EditItemDialog extends Dialog {
 
 	_onAddTag(element) {
 		element.insertAdjacentHTML('beforeend', `
-      <div class="input-group">
-        <input name="data.tags[]" type="text" value=""/>
-        <div class="input-group-append">
-          <button type="button" data-action="move-tag-up"><i class="fa fa-arrow-up"></i></button>
-          <button type="button" data-action="move-tag-down"><i class="fa fa-arrow-down"></i></button>
-          <button type="button" data-action="delete-tag"><i class="fa fa-trash"></i></button>
-        </div>
-      </div>
-    `);
+			<div class="input-group">
+				<input name="data.tags[]" type="text" value=""/>
+				<div class="input-group-append">
+				<button type="button" data-action="move-tag-up"><i class="fa fa-arrow-up"></i></button>
+				<button type="button" data-action="move-tag-down"><i class="fa fa-arrow-down"></i></button>
+				<button type="button" data-action="delete-tag"><i class="fa fa-trash"></i></button>
+				</div>
+			</div>
+    	`);
 	}
 
 	_onClickModifiers(e) {
@@ -103,36 +103,36 @@ export default class EditItemDialog extends Dialog {
 
 	_onAddModifier(element) {
 		element.insertAdjacentHTML('beforeend', `
-        <div class="input-group">
-            <input name="data.modifiers[].value" type="number" value=""/>
-            <select name="data.modifiers[].type">
-                  <optgroup label="Attributes">
-                    <option value="str">STR</option>
-                    <option value="dex">DEX</option>
-                    <option value="con">CON</option>
-                    <option value="int">INT</option>
-                    <option value="wis">WIS</option>
-                    <option value="cha">CHA</option>
-                  </optgroup>
-                  <optgroup label="Attributes">
-                    <option value="fig">FIG</option>
-                    <option value="rog">ROG</option>
-                    <option value="exp">EXP</option>
-                    <option value="sag">SAG</option>
-                    <option value="art">ART</option>
-                    <option value="dip">DIP</option>
-                  </optgroup>
-                  <optgroup label="Other">
-                    <option value="res">RES</option>
-                  </optgroup>
-                </select>
-            <div class="input-group-append">
-                <button type="button" data-action="move-modifier-up"><i class="fa fa-arrow-up"></i></button>
-                <button type="button" data-action="move-modifier-down"><i class="fa fa-arrow-down"></i></button>
-                <button type="button" data-action="delete-modifier"><i class="fas fa-trash"></i></button>
-            </div>
-        </div>
-      `);
+			<div class="input-group">
+				<input name="data.modifiers[].value" type="number" value=""/>
+				<select name="data.modifiers[].type">
+					<optgroup label="${game.i18n.localize("common.attributes")}">
+						<option value="str">${game.i18n.localize("common.str.code")}</option>
+						<option value="dex">${game.i18n.localize("common.dex.code")}</option>
+						<option value="con">${game.i18n.localize("common.con.code")}</option>
+						<option value="int">${game.i18n.localize("common.int.code")}</option>
+						<option value="wis">${game.i18n.localize("common.wis.code")}</option>
+						<option value="cha">${game.i18n.localize("common.cha.code")}</option>
+					</optgroup>
+					<optgroup label="${game.i18n.localize("common.archetypes")}">
+						<option value="fig">${game.i18n.localize("common.fig.code")}</option>
+						<option value="rog">${game.i18n.localize("common.rog.code")}</option>
+						<option value="exp">${game.i18n.localize("common.exp.code")}</option>
+						<option value="sag">${game.i18n.localize("common.sag.code")}</option>
+						<option value="art">${game.i18n.localize("common.art.code")}</option>
+						<option value="dip">${game.i18n.localize("common.dip.code")}</option>
+					</optgroup>
+					<optgroup label="${game.i18n.localize("common.miscellaneous")}">
+						<option value="res">${game.i18n.localize("common.res.code")}</option>
+					</optgroup>
+					</select>
+				<div class="input-group-append">
+					<button type="button" data-action="move-modifier-up"><i class="fa fa-arrow-up"></i></button>
+					<button type="button" data-action="move-modifier-down"><i class="fa fa-arrow-down"></i></button>
+					<button type="button" data-action="delete-modifier"><i class="fas fa-trash"></i></button>
+				</div>
+			</div>
+      	`);
 	}
 
 	_onEditIcon(e) {
@@ -155,9 +155,15 @@ export default class EditItemDialog extends Dialog {
 			const dlg = new this(item, {
 				title: `Edit | ${item.name}`,
 				buttons: {
+					cancel: {
+						icon: '<i class="fas fa-times"></i>',
+						label: "Cancel",
+						callback: reject
+					},
 					save: {
 						icon: '<i class="fas fa-save"></i>',
 						label: "Save",
+						class: "btn-primary btn-save",
 						callback: html => {
 							let form = html.find("#edit-item")[0];
 							let output = {
@@ -172,7 +178,9 @@ export default class EditItemDialog extends Dialog {
 								"data.canHaveValue": form.querySelector("[name='data.canHaveValue']").checked,
 								"data.value": form.querySelector("[name='data.value']").value,
 								"data.descriptions.simple": form.querySelector("[name='data.descriptions.simple']").value,
+								"data.descriptions.simpleFlavor": form.querySelector("[name='data.descriptions.simpleFlavor']").value,
 								"data.descriptions.expanded": form.querySelector("[name='data.descriptions.expanded']").value,
+								"data.descriptions.expandedFlavor": form.querySelector("[name='data.descriptions.expandedFlavor']").value,
 								"data.tags": [],
 								"data.modifiers": []
 							};
@@ -193,11 +201,6 @@ export default class EditItemDialog extends Dialog {
 							});
 							resolve(output);
 						}
-					},
-					cancel: {
-						icon: '<i class="fas fa-times"></i>',
-						label: "Cancel",
-						callback: reject
 					}
 				},
 				close: reject

@@ -7,6 +7,7 @@ export default class ActorEntity extends Actor {
 	prepareData() {
 		super.prepareData();
         const actor = this.data;
+		this._validateItems(actor.items);
 		let itemStats = this._getItemStatistics(actor.items);
 		["str", "dex", "con", "int", "wis", "cha"].forEach(x => this._applyAttributeModifier(actor, x, itemStats.modifiers[x]));
 		["fig", "rog", "exp", "sag", "art", "dip"].forEach(x => this._applyArchetypeModifier(actor, x, itemStats.modifiers[x]));
@@ -19,6 +20,20 @@ export default class ActorEntity extends Actor {
 		actor.data.totalInventoryEquipped = itemStats.totals["equipped"];
 		actor.data.totalInventoryVisible = itemStats.totals["visible"];
 		actor.data.totalInventoryHidden = itemStats.totals["hidden"];
+	}
+
+	_validateItems(items) {
+		items.forEach(function(item) {
+			if (item.data.canHaveBulk && !item.data.bulk) {
+				item.data.bulk = 0;
+			}
+			if (item.data.canHaveValue && !item.data.value) {
+				item.data.value = 0;
+			}
+			if (item.data.canHaveCharges && !item.data.charges) {
+				item.data.charges = 0;
+			}
+		});
 	}
 
 	_getItemStatistics(items) {

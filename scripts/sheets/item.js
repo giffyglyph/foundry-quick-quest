@@ -20,14 +20,14 @@ export default class ItemSheetItem extends ItemSheet {
 	/** @override */
     getData() {
         const data = super.getData();
-        data.item.data.showExtras = data.item.data.canHaveQuantity || data.item.data.canBeEquipped || data.item.data.canHaveBulk || data.item.data.canHaveValue;
-		data.item.data.extrasCount = data.item.data.canHaveQuantity + data.item.data.canBeEquipped + data.item.data.canHaveBulk + data.item.data.canHaveValue;
+        data.item.data.showExtras = data.item.data.canHaveQuantity || data.item.data.canHaveBulk || data.item.data.canHaveValue;
+		data.item.data.extrasCount = data.item.data.canHaveQuantity + data.item.data.canHaveBulk + data.item.data.canHaveValue;
         return data;
     }
 
 	activateListeners(html) {
 		html.find('button[data-action="edit"]').click(this._onItemEdit.bind(this));
-		html.find('.item__extra--equipped').click(ev => this._onToggleEquipped(ev));
+		html.find('.item__equipped').click(ev => this._onToggleEquipped(ev));
 		html.find('.item__extra--quantity input').change(ev => this._onUpdateQuantity(ev.target.value));
 		html.find('.item__extra--value input').change(ev => this._onUpdateValue(ev.target.value));
 		html.find('.item__extra--bulk input').change(ev => this._onUpdateBulk(ev.target.value));

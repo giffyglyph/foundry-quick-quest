@@ -13,7 +13,7 @@ $dialog--well--background: #e2e2e2;
     overflow: hidden;
     background: $dialog--background;
     position: relative;
-    font-family: 'Open Sans';
+    font-family: 'Source Sans Pro';
 
     .dialog__title {
         background: $dialog--title--background;
@@ -116,6 +116,19 @@ $dialog--well--background: #e2e2e2;
         margin: 0;
         padding: 0;
         align-items: flex-start;
+
+        &.form-group--column {
+            flex-direction: column;
+
+            .form-group__header {
+                flex-grow: 0;
+            }
+
+            .form-group__body {
+                width: 100%;
+                flex-grow: 1;
+            }
+        }
 
         + .form-group {
             border-top: 1px dotted darken($dialog--tabs--background, 10%);
@@ -257,8 +270,8 @@ $dialog--well--background: #e2e2e2;
             padding: 0.5rem;
             display: inline-block;
             font-weight: bolder;
-            font-family: 'Open Sans';
-            font-weight: 500;
+            font-family: 'Source Sans Pro';
+            font-weight: 700;
 
             &:not(:last-child) {
                 margin-right: 4px;
