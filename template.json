@@ -2,7 +2,7 @@
   "Actor": {
     "types": ["character"],
     "templates": {
-      "common": {
+      "base": {
         "attributes": {
           "str": {
             "base": 0
@@ -46,7 +46,7 @@
       }
     },
     "character": {
-      "templates": ["common"],
+      "templates": ["base"],
       "ancestry": null,
       "calling": null,
       "resolve": {
@@ -54,40 +54,51 @@
         "maximum": {
           "base": 10
         }
-      },
-      "misc": {
-        "inventory": null
-      },
-      "htmlFields": ["misc.inventory"]
+      }
     }
   },
   "Item": {
-    "types": ["item"],
+    "types": ["resource", "perk"],
     "templates": {
-      "item": {
-        "descriptions": {
-          "simple": null,
-          "simpleFlavor": null,
-          "expanded": null,
-          "expandedFlavor": null
-        },
-        "canBeEquipped": false,
-        "isEquipped": false,
+      "base": {
         "isHidden": false,
-        "canHaveCharges": false,
-        "charges": 1,
-        "canHaveBulk": true,
-        "bulk": 1,
-        "canHaveValue": true,
-        "value": 10,
         "modifiers": [],
         "rarity": "common",
-        "tags": []
+        "tags": [],
+        "descriptions": {
+          "primary": {
+            "main": null,
+            "flavor": null
+          },
+          "secondary": {
+            "main": null,
+            "flavor": null
+          }
+        }
+      },
+      "equip": {
+        "canBeEquipped": false,
+        "isEquipped": false
+      },
+      "charges": {
+        "canHaveCharges": false,
+        "charges": 1
+      },
+      "bulk": {
+        "canHaveBulk": true,
+        "bulk": 1
+      },
+      "value": {
+        "canHaveValue": true,
+        "value": 10
       }
     },
-    "htmlFields": ["descriptions.simple", "descriptions.simpleFlavor", "descriptions.expanded", "descriptions.expandedFlavor"],
-    "item": {
-      "templates": ["item"]
+    "htmlFields": ["descriptions.primary.main", "descriptions.primary.flavor", "descriptions.secondary.main", "descriptions.secondary.flavor"],
+    "resource": {
+      "templates": ["base", "equip", "charges", "bulk", "value"]
+    },
+    "perk": {
+      "templates": ["base"]
     }
   }
 }

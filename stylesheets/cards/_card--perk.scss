@@ -1,0 +1,293 @@
+.gqq-card--perk {
+    display: flex;
+    flex-direction: column;
+
+    .perk__body {
+        padding: 0;
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    .perk__description {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        overflow: hidden;
+        margin-right: -0.75rem;
+
+        > :last-child {
+            padding-right: 0.5rem;
+            margin-right: 0.25rem;
+        }
+    }
+
+    .perk__blurb {
+        text-align: center;
+        font-family: 'Source Sans Pro';
+        font-size: 14px;
+        line-height: 1.2;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        flex-grow: 1;
+        padding: 0;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 1px;
+    }
+
+    .perk__blurb__text {
+        margin: 0;
+        width: 100%;
+        text-align: left;
+        flex-grow: 1;
+
+        + .perk__blurb__flavor {
+            padding-top: 0.75rem;
+        }
+    }
+
+    .perk__blurb__flavor {
+        text-align: right;
+        font-style: italic;
+    }
+
+    .perk__blurb__text,
+    .perk__blurb__flavor {
+
+        > *:first-child {
+            margin-top: 0;
+        }
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .perk__modifiers {
+        font-size: 1.5rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        padding: 0;
+        margin: 0 0 0.75rem;
+        text-align: center;
+        letter-spacing: 0.5px;
+        font-family: 'Londrina Solid';
+
+        span:not(:last-child)::after {
+            content: ",";
+        }
+    }
+
+    .perk__extras {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        position: relative;
+        flex-shrink: 0;
+        margin: 0.75rem 0 0;
+        border-top: 1px solid rgba($card--body--background, 0.5);
+        padding: 0.75rem 0 0;
+
+        .perk__extra {
+            height: 69px;
+            width: 69px;
+        }
+
+        .perk__extra + .perk__extra {
+            margin-left: 0.25rem;
+        }
+    }
+
+    .perk__extra {
+        border-radius: 1rem;
+        font-family: 'Londrina Solid';
+        font-size: 30px;
+        font-weight: 400;
+        position: relative;
+        flex-shrink: 0;
+        background: mix($card--body--background, white, 50%);
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .extra__value {
+        position: relative;
+        width: 100%;
+        padding: 0px 2px;
+        box-sizing: border-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+        text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+    }
+
+    .extra__icon {
+        font-size: 38px;
+        color: white;
+        text-align: center;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .extra__input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        background: white;
+        display: flex;
+        font-weight: 400;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border: 3px solid $card--highlight;
+        z-index: 2;
+        border-radius: 1rem;
+
+        &:focus {
+            opacity: 1;
+            box-shadow: none;
+        }
+    }
+
+    .perk__extra--bulk,
+    .perk__extra--value,
+    .perk__extra--charges {
+        font-size: 17px;
+
+        &.length-0,
+        &.length-1,
+        &.length-2,
+        &.length-3,
+        &.length-4 {
+            font-size: 30px;
+        }
+
+        &.length-5 {
+            font-size: 24px;
+        }
+
+        &.length-6 {
+            font-size: 20px;
+        }
+    }
+
+    .perk__equipped {
+        position: absolute;
+        right: -3.5rem;
+        height: 3rem;
+        width: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1rem;
+        bottom: 0;
+        font-size: 27px;
+        background: $card--body--background;
+        color: $card--stars--background;
+
+        &.equipped {
+            color: black;
+        }
+    }
+
+    .perk__equipped:hover {
+        cursor: pointer;
+    }
+
+    .perk__back {
+        background: $card--description--background;
+        border-radius: 1rem;
+        padding: 0.75rem 0.75rem 1.75rem;
+        overflow-y: auto;
+        font-family: 'Source Sans Pro';
+        position: relative;
+        flex-grow: 1;
+        font-size: 14px;
+        line-height: 1.2;
+        display: flex;
+        overflow: hidden;
+
+        .perk__blurb {
+            margin-right: -0.5rem;
+            padding-right: 0.5rem;
+        }
+    }
+}
+
+.gqq-card--rarity--uncommon {
+
+    .perk__equipped {
+        background: $card--uncommon--body--background;
+        color: darken($card--uncommon--body--background, 5%);
+    }
+
+    .perk__extras {
+        border-top-color: rgba($card--uncommon--body--background, 0.5);
+    }
+
+    .perk__extra {
+        background: rgba($card--uncommon--body--background, 0.5);
+    }
+}
+
+.gqq-card--rarity--rare {
+
+    .perk__equipped {
+        background: $card--rare--body--background;
+        color: darken($card--rare--body--background, 5%);
+    }
+
+    .perk__extras {
+        border-top-color: rgba($card--rare--body--background, 0.5);
+    }
+
+    .perk__extra {
+        background: rgba($card--rare--body--background, 0.5);
+    }
+}
+
+.gqq-card--rarity--epic {
+
+    .perk__equipped {
+        background: $card--epic--body--background;
+        color: darken($card--epic--body--background, 5%);
+    }
+
+    .perk__extras {
+        border-top-color: rgba($card--epic--body--background, 0.5);
+    }
+
+    .perk__extra {
+        background: rgba($card--epic--body--background, 0.5);
+    }
+}
+
+.gqq-card--rarity--legendary {
+
+    .perk__equipped {
+        background: $card--legendary--body--background;
+        color: darken($card--legendary--body--background, 5%);
+    }
+
+    .perk__extras {
+        border-top-color: rgba($card--legendary--body--background, 0.5);
+    }
+
+    .perk__extra {
+        background: rgba($card--legendary--body--background, 0.5);
+    }
+}

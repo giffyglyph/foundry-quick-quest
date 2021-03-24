@@ -1,7 +1,8 @@
 import { preloadHandlebarsTemplates } from "./scripts/templates/templates.js";
 
 import ActorSheetCharacter from './scripts/sheets/character.js';
-import ItemSheetItem from './scripts/sheets/item.js';
+import ItemSheetResource from './scripts/sheets/resource.js';
+import ItemSheetPerk from './scripts/sheets/perk.js';
 import ActorEntity from './scripts/entities/actor.js';
 import ItemEntity from './scripts/entities/item.js';
 
@@ -23,9 +24,15 @@ Hooks.once("init", function() {
 		label: "sheet.character.label"
 	});
 	Items.unregisterSheet("core", ItemSheet);
-	Items.registerSheet("gqq", ItemSheetItem, {
+	Items.registerSheet("gqq", ItemSheetResource, {
+		types: ['resource'],
 		makeDefault: true,
-		label: "sheet.item.label"
+		label: "sheet.resource.label"
+	});
+	Items.registerSheet("gqq", ItemSheetPerk, {
+		types: ['perk'],
+		makeDefault: true,
+		label: "sheet.perk.label"
 	});
 
 	// Register handlebars helpers
@@ -38,5 +45,5 @@ Hooks.once("init", function() {
 
 	preloadHandlebarsTemplates();
 
-  console.log(`Giffyglyph's Quick Quest | Initialised`);
+	console.log(`Giffyglyph's Quick Quest | Initialised`);
 });

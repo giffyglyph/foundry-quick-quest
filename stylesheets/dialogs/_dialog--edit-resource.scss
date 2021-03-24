@@ -1,0 +1,15 @@
+.gqq-dialog--edit-resource {
+
+   .form-group--description {
+        flex-grow: 1;
+
+        .form-group__body {
+            height: 100%;
+        }
+
+        textarea {
+            flex-grow: 1;
+            resize: none;
+        }
+    }
+}

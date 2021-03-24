@@ -6,8 +6,12 @@
                 <span>Quest</span>
                 <span>{{localize 'sheet.character.title'}}</span>
             </div>
-            <a class="item active" data-tab="attributes">{{localize 'sheet.character.nav.attributes'}}</a>
-            <a class="item" data-tab="inventory">{{localize 'sheet.character.nav.inventory'}}</a>
+            <div class="navigation">
+                <a class="item active" data-tab="aspects">{{localize 'sheet.character.nav.aspects'}}</a>
+                <a class="item" data-tab="perks">{{localize 'sheet.character.nav.perks'}}</a>
+                <a class="item" data-tab="resources">{{localize 'sheet.character.nav.resources'}}</a>
+            </div>
+            <button type="button" class="character-action--roll"><i class="fas fa-dice-d20"></i><span>Roll</span></button>
         </nav>
         <header class="character__header">
             <div class="character__name">
@@ -19,7 +23,7 @@
             <div class="character__perks">
                 <div class="field field--input">
                     <label for="perks">{{localize 'common.perks'}}</label>
-                    <input name="perks" type="number" value="{{data.perks}}" title="{{data.perks}}"/>
+                    <input type="number" value="{{data.perks.totalVisible}}" disabled/>
                 </div>
             </div>
             <div class="character__ancestry">
@@ -36,7 +40,7 @@
             </div>
         </header>
         <div class="tabs__body character__body">
-            <div class="tab tab--attributes" data-group="primary" data-tab="attributes">
+            <div class="tab tab--aspects" data-group="primary" data-tab="aspects">
                 <div class="attributes character__attributes">
                     <header class="attributes__header">{{localize 'common.attributes'}}</header>
                     <section class="attributes__body">
@@ -151,7 +155,7 @@
                             <span>{{localize 'common.current'}}</span>
                         </div>
                         <div class="resolve__maximum">
-                            <input name="data.resolve.maximum.base" type="number" value="{{data.resolve.maximum.base}}" title="{{#each data.resolve.maximum.sources as | source id |}}{{source}}{{#unless @last}},&#010;{{/unless}}{{/each}}">
+                            <input name="data.resolve.maximum.base" type="number" value="{{data.resolve.maximum.base}}" title="{{#each data.resolve.maximum.sources as | source id |}}{{localize 'sheet.character.source' value=source.value source=source.source}}{{#unless @last}},&#010;{{/unless}}{{/each}}">
                             <span class="resolve__maximum__value resolve__maximum__value--{{data.resolve.maximum.class}}">{{data.resolve.maximum.total}}</span>
                             <span>{{localize 'common.maximum'}}</span>
                         </div>
@@ -166,85 +170,149 @@
                     </section>
                 </div>
             </div>
-            <div class="tab tab--inventory" data-group="primary" data-tab="inventory">
-                <div class="fieldset character__inventory">
+            <div class="tab tab--perks" data-group="primary" data-tab="perks">
+                <div class="fieldset fieldset--items character__perks">
                     <section class="fieldset__body">
-                        {{#if items.length}}
-                            <table>
-                                <thead>
-                                    <th></th>
-                                    <th>Equipment</th>
-                                    <th>Bulk</th>
-                                    <th>Value</th>
-                                    <th>Charges</th>
-                                    <th>Equip</th>
-                                    <th>Actions</th>
-                                </thead>
-                                <tbody class="items item-list">
-                                    {{#each items as | item id |}}
-                                        <tr class="item item--rarity--{{item.data.rarity}} {{#if item.data.isHidden}}item--hidden{{/if}}" data-item-id="{{item._id}}">
+                        <table>
+                            <thead>
+                                <th></th>
+                                <th>{{localize 'common.perk'}}</th>
+                                <th>{{localize 'common.modifiers'}}</th>
+                                <th>{{localize 'common.actions'}}</th>
+                            </thead>
+                            <tbody class="items perks item-list">
+                                {{#if data.perks.items.length}}
+                                    {{#each data.perks.items as | item id |}}
+                                        <tr class="item item--rarity--{{item.data.rarity}} {{#if item.data.isHidden}}item--hidden{{/if}} perk" data-item-id="{{item._id}}">
                                             <td class="item__icon">
                                                 <img src="{{item.img}}"/>
                                             </td>
                                             <td class="item__title">
                                                 <input data-field="name" type="text" value="{{item.name}}" title="{{item.name}}"/>
                                             </td>
-                                            <td class="item__bulk">
-                                                {{#if item.data.canHaveBulk}}
-                                                    <input data-field="data.bulk" type="number" value="{{item.data.bulk}}"/>
-                                                {{/if}}
-                                            </td>
-                                            <td class="item__value">
-                                                {{#if item.data.canHaveValue}}
-                                                    <input data-field="data.value" type="number" value="{{item.data.value}}"/>
-                                                {{/if}}
-                                            </td>
-                                            <td class="item__charges">
-                                                {{#if item.data.canHaveCharges}}
-                                                    <input data-field="data.charges" type="number" value="{{item.data.charges}}"/>
-                                                {{/if}}
-                                            </td>
-                                            <td class="item__equipped">
-                                                {{#if item.data.canBeEquipped}}
-                                                    <button type="button" class="item__action item__action--toggle-equipped {{#if item.data.isEquipped}}equipped{{/if}}" title="{{localize 'sheet.character.inventory.actions.toggle.equipped'}}">
-                                                        <i class="fas fa-shield-alt"></i>
-                                                    </button>
-                                                {{/if}}
+                                            <td class="perk__modifiers" title="{{#each item.data.modifiers as | modifier id |}}{{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}{{#unless @last}}, {{/unless}}{{/each}}">
+                                                {{#each item.data.modifiers as | modifier id |}}{{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}{{#unless @last}}, {{/unless}}{{/each}}
                                             </td>
                                             <td class="item__actions">
-                                                <button type="button" class="item__action item__action--toggle-hidden" title="{{localize 'sheet.character.inventory.actions.toggle.hidden'}}">
+                                                <button type="button" class="item__action item__action--toggle-hidden" title="{{localize 'sheet.character.items.actions.toggle.hidden'}}">
                                                     <i class="fas fa-eye-slash"></i>
                                                 </button>
-                                                <button type="button" class="item__action item__action--edit" title="{{localize 'sheet.character.inventory.actions.inspect'}}">
+                                                <button type="button" class="item__action item__action--open" title="{{localize 'sheet.character.items.actions.inspect'}}">
                                                     <i class="fas fa-book-open"></i>
                                                 </button>
-                                                <button type="button" class="item__action item__action--delete" title="{{localize 'sheet.character.inventory.actions.delete'}}">
+                                                <button type="button" class="item__action item__action--delete" title="{{localize 'sheet.character.items.actions.delete'}}">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
                                         </tr>
                                     {{/each}}
-                                </tbody>
-                            </table>
-                        {{/if}}
+                                {{else}}
+                                    <tr class="empty">
+                                        <td colspan="7">{{localize 'sheet.character.perks.empty'}}</td>
+                                    </tr>
+                                {{/if}}
+                            </tbody>
+                        </table>
                     </section>
-                    <footer class="fieldset__footer inventory__controls">
-                        <div class="inventory__stats">
-                            <div class="inventory__count" title="{{#if data.totalInventoryHidden}}{{localize 'common.counter.hidden' count=data.totalInventoryVisible hidden=data.totalInventoryHidden}}{{else}}{{localize 'common.counter.items' count=data.totalInventoryVisible}}{{/if}}">
-                                <i class="fa fa-list"></i>{{data.totalInventoryVisible}}
-                            </div>
-                            <div class="inventory__equipped" title="{{localize 'common.counter.equipped' count=data.totalInventoryEquipped}}">
-                                <i class="fa fa-hand-paper"></i>{{data.totalInventoryEquipped}}
-                            </div>
-                            <div class="inventory__bulk" title="{{localize 'common.counter.bulk' count=data.totalInventoryBulk}}">
-                                <i class="fa fa-weight-hanging"></i>{{data.totalInventoryBulk}}
-                            </div>
-                            <div class="inventory__value" title="{{localize 'common.counter.value' count=data.totalInventoryValue}}">
-                                <i class="fa fa-coins"></i>{{data.totalInventoryValue}}
+                    <footer class="fieldset__footer fieldset--items__controls">
+                        <div class="fieldset--items__details">
+                            <div class="perks__count" title="{{localize 'common.counter.perks' count=data.perks.totalVisible}} {{#if data.perks.totalHidden}}({{localize 'common.counter.hidden' count=data.perks.totalHidden}}){{/if}}">
+                                <i class="fa fa-list"></i>{{data.perks.totalVisible}}
                             </div>
                         </div>
-                        <button type="button" class="item__action item__action--add" title="{{localize 'sheet.character.inventory.actions.add'}}">
-                            <i class="fas fa-plus-circle"></i> {{localize 'sheet.character.inventory.actions.add'}}
+                        <button type="button" class="item__action item__action--add" title="{{localize 'sheet.character.perks.actions.add'}}">
+                            <i class="fas fa-plus-circle"></i> {{localize 'sheet.character.perks.actions.add'}}
+                        </button>
+                    </footer>
+                </div>
+            </div>
+            <div class="tab tab--resources" data-group="primary" data-tab="resources">
+                <div class="fieldset fieldset--items character__resources">
+                    <section class="fieldset__body">
+                        <table>
+                            <thead>
+                                <th></th>
+                                <th>{{localize 'common.resource'}}</th>
+                                <th>{{localize 'common.bulk'}}</th>
+                                <th>{{localize 'common.value'}}</th>
+                                <th>{{localize 'common.charges'}}</th>
+                                <th>{{localize 'common.equip'}}</th>
+                                <th>{{localize 'common.modifiers'}}</th>
+                                <th>{{localize 'common.actions'}}</th>
+                            </thead>
+                            <tbody class="items resources item-list">
+                                {{#if data.resources.items.length}}
+                                    {{#each data.resources.items as | item id |}}
+                                        <tr class="item item--rarity--{{item.data.rarity}} {{#if item.data.isHidden}}item--hidden{{/if}} resource" data-item-id="{{item._id}}">
+                                            <td class="item__icon">
+                                                <img src="{{item.img}}"/>
+                                            </td>
+                                            <td class="item__title">
+                                                <input data-field="name" type="text" value="{{item.name}}" title="{{item.name}}"/>
+                                            </td>
+                                            <td class="resource__bulk">
+                                                {{#if item.data.canHaveBulk}}
+                                                    <input data-field="data.bulk" type="number" value="{{item.data.bulk}}"/>
+                                                {{/if}}
+                                            </td>
+                                            <td class="resource__value">
+                                                {{#if item.data.canHaveValue}}
+                                                    <input data-field="data.value" type="number" value="{{item.data.value}}"/>
+                                                {{/if}}
+                                            </td>
+                                            <td class="resource__charges">
+                                                {{#if item.data.canHaveCharges}}
+                                                    <input data-field="data.charges" type="number" value="{{item.data.charges}}"/>
+                                                {{/if}}
+                                            </td>
+                                            <td class="resource__equipped">
+                                                {{#if item.data.canBeEquipped}}
+                                                    <button type="button" class="item__action resource__action--toggle-equipped {{#if item.data.isEquipped}}equipped{{/if}}" title="{{localize 'sheet.character.resources.actions.toggle.equipped'}}">
+                                                        <i class="fas fa-shield-alt"></i>
+                                                    </button>
+                                                {{/if}}
+                                            </td>
+                                            <td class="resource__modifiers" title="{{#each item.data.modifiers as | modifier id |}}{{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}{{#unless @last}}, {{/unless}}{{/each}}">
+                                                {{#each item.data.modifiers as | modifier id |}}{{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}{{#unless @last}}, {{/unless}}{{/each}}
+                                            </td>
+                                            <td class="item__actions">
+                                                <button type="button" class="item__action item__action--toggle-hidden" title="{{localize 'sheet.character.items.actions.toggle.hidden'}}">
+                                                    <i class="fas fa-eye-slash"></i>
+                                                </button>
+                                                <button type="button" class="item__action item__action--open" title="{{localize 'sheet.character.items.actions.inspect'}}">
+                                                    <i class="fas fa-book-open"></i>
+                                                </button>
+                                                <button type="button" class="item__action item__action--delete" title="{{localize 'sheet.character.items.actions.delete'}}">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    {{/each}}
+                                {{else}}
+                                    <tr class="empty">
+                                        <td colspan="7">{{localize 'sheet.character.resources.empty'}}</td>
+                                    </tr>
+                                {{/if}}
+                            </tbody>
+                        </table>
+                    </section>
+                    <footer class="fieldset__footer fieldset--items__controls">
+                        <div class="fieldset--items__details">
+                            <div class="resources__count" title="{{localize 'common.counter.resources' count=data.resources.totalVisible}} {{#if data.resources.totalHidden}}({{localize 'common.counter.hidden' count=data.resources.totalHidden}}){{/if}}">
+                                <i class="fa fa-list"></i>{{data.resources.totalVisible}}
+                            </div>
+                            <div class="resources__equipped" title="{{localize 'common.counter.equipped' count=data.resources.totalEquipped}}">
+                                <i class="fa fa-hand-paper"></i>{{data.resources.totalEquipped}}
+                            </div>
+                            <div class="resources__bulk" title="{{localize 'common.counter.bulk' count=data.resources.totalBulk}}">
+                                <i class="fa fa-weight-hanging"></i>{{data.resources.totalBulk}}
+                            </div>
+                            <div class="resources__value" title="{{localize 'common.counter.value' count=data.resources.totalValue}}">
+                                <i class="fa fa-coins"></i>{{data.resources.totalValue}}
+                            </div>
+                        </div>
+                        <button type="button" class="item__action item__action--add" title="{{localize 'sheet.character.resources.actions.add'}}">
+                            <i class="fas fa-plus-circle"></i> {{localize 'sheet.character.resources.actions.add'}}
                         </button>
                     </footer>
                 </div>

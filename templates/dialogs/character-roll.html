@@ -1,10 +1,10 @@
 <form id="character-roll" class="gqq-dialog gqq-dialog--character-roll" onsubmit="event.preventDefault();">
     <div class="dialog__body">
-        <div class="dialog__title">Make a Roll</div>
+        <div class="dialog__title">{{localize 'dialog.character_roll.title'}}</div>
         <div class="dialog__well">
             <div class="form-group roll__attributes">
                 <div class="attributes character__attributes">
-                    <header class="attributes__header">Attribute</header>
+                    <header class="attributes__header">{{localize 'common.attribute'}}</header>
                     <section class="attributes__body">
                         <div class="attribute {{#if preselectStr}}active{{/if}}">
                             <input type="radio" name="attribute" value="str" {{#if preselectStr}}checked{{/if}}>
@@ -69,7 +69,7 @@
                     </section>
                 </div>
                 <div class="attributes character__archetypes">
-                    <header class="attributes__header">Archetype</header>
+                    <header class="attributes__header">{{localize 'common.archetype'}}</header>
                     <section class="attributes__body">
                         <div class="attribute {{#if preselectFig}}active{{/if}}">
                             <input type="radio" name="archetype" value="fig" {{#if preselectFig}}checked{{/if}}>
@@ -136,16 +136,16 @@
             </div>
             <div class="roll__options">
                 <div class="form-group">
-                    <label>Bonus</label>
+                    <label>{{localize 'dialog.character_roll.bonus'}}</label>
                     <input name="bonus" type="text" placeholder="e.g. +1d4"/>
                 </div>
                 <div class="form-group">
-                    <label>Roll Mode</label>
+                    <label>{{localize 'dialog.character_roll.roll_mode.title'}}</label>
                     <select name="mode">
-                        <option value="roll" selected="">Public Roll</option>
-                        <option value="gmroll">Private GM Roll</option>
-                        <option value="blindroll">Blind GM Roll</option>
-                        <option value="selfroll">Self Roll</option>
+                        <option value="roll" selected="">{{localize 'dialog.character_roll.roll_mode.roll'}}</option>
+                        <option value="gmroll">{{localize 'dialog.character_roll.roll_mode.gmroll'}}</option>
+                        <option value="blindroll">{{localize 'dialog.character_roll.roll_mode.blindroll'}}</option>
+                        <option value="selfroll">{{localize 'dialog.character_roll.roll_mode.selfroll'}}</option>
                     </select>
                 </div>
             </div>

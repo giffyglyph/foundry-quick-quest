@@ -1,0 +1,103 @@
+<div class="gqq-card gqq-card--rarity--{{data.rarity}} gqq-card--resource {{cssClass}}">
+    <form class="card__body" autocomplete="off">
+        <div class="card__title" title="{{item.name}}">{{item.name}}</div>
+        <div class="card__rarity" title="{{localize (concat 'common.rarities.' data.rarity)}}">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <div class="card__tabs__body resource__body">
+            <div class="card__tab resource__tab--front" data-group="primary" data-tab="front">
+                <div class="card__image">
+                    <img src="{{item.img}}" data-edit="img"/>
+                    {{#if data.canBeEquipped}}
+                        <div class="resource__equipped {{#if data.isEquipped}}equipped{{/if}}" title="{{#if data.isEquipped}}Equipped{{else}}Unequipped{{/if}}">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="card__tags" title="{{#each data.tags as | tag id |}}{{tag}}{{#unless @last}}, {{/unless}}{{/each}}">
+                    {{#if data.tags}}
+                        {{#each data.tags as | tag id |}}
+                            <span class="card__tag">{{tag}}</span>
+                        {{/each}}
+                    {{else}}
+                        &nbsp;
+                    {{/if}}
+                </div>
+                <div class="card__details">
+                    {{#if data.modifiers.length}}
+                        <div class="resource__modifiers">
+                            {{#each data.modifiers as | modifier id |}}
+                                <span class="resource__modifier">
+                                    {{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}
+                                </span>
+                            {{/each}}
+                        </div>
+                    {{/if}}
+                    <div class="resource__blurb">
+                        <div class="resource__blurb__text">{{{data.descriptions.primary.main}}}</div>
+                        {{#if data.descriptions.primary.flavor}}
+                            <div class="resource__blurb__flavor">{{{data.descriptions.primary.flavor}}}</div>
+                        {{/if}}
+                    </div>
+                    {{#if data.showExtras}}
+                        <div class="resource__extras">
+                            {{#if data.canHaveBulk}}
+                                <div class="resource__extra resource__extra--bulk length-{{strlen data.bulk}}" title="Bulk: {{data.bulk}}">
+                                    <span class="extra__icon"><i class="fa fa-fw fa-weight-hanging"></i></span>
+                                    <span class="extra__value">{{#if data.bulk}}{{data.bulk}}{{else}}0{{/if}}</span>
+                                    <input class="extra__input" type="number" name="data.bulk" value="{{data.bulk}}"/>
+                                </div>
+                            {{/if}}
+                            {{#if data.canHaveValue}}
+                                <div class="resource__extra resource__extra--value length-{{strlen data.value}}" title="Value: {{data.value}}">
+                                    <span class="extra__icon"><i class="fa fa-fw fa-coins"></i></span>
+                                    <span class="extra__value">{{#if data.value}}{{data.value}}{{else}}0{{/if}}</span>
+                                    <input class="extra__input" type="number" name="data.value" value="{{data.value}}"/>
+                                </div>
+                            {{/if}}
+                            {{#if data.canHaveCharges}}
+                                <div class="resource__extra resource__extra--charges length-{{strlen data.charges}}" title="Charges: {{data.charges}}">
+                                    <span class="extra__icon"><i class="fa fa-fw fa-bolt"></i></span>
+                                    <span class="extra__value">{{#if data.charges}}{{data.charges}}{{else}}0{{/if}}</span>
+                                    <input class="extra__input" type="number" name="data.charges" value="{{data.charges}}"/>
+                                </div>
+                            {{/if}}
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+            {{#if data.descriptions.secondary.main}}
+                <div class="card__tab resource__tab--back" data-group="primary" data-tab="back">
+                    <div class="resource__back">
+                        <div class="resource__blurb">
+                            <div class="resource__blurb__text">
+                                {{{data.descriptions.secondary.main}}}
+                            </div>
+                            {{#if data.descriptions.secondary.flavor}}
+                                <div class="resource__blurb__flavor">{{{data.descriptions.secondary.flavor}}}</div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+        <div class="card__type">{{localize 'common.resource'}}</div>
+    </form>
+    <div class="card__footer">
+        <div class="card__id">
+            <span class="id">{{item._id}}</span>
+            <span class="name">Quick Quest</span>
+        </div>
+        <nav class="card__tabs__nav" data-group="primary">
+            <button type="button" class="active" data-tab="front">{{localize 'sheet.item.nav.front'}}</button>
+            {{#if data.descriptions.secondary.main}}
+                <button type="button" data-tab="back">{{localize 'sheet.item.nav.back'}}</button>
+            {{/if}}
+            <button type="button" data-action="edit"><i class="fas fa-edit"></i></button>
+        </nav>
+    </div>
+</div>

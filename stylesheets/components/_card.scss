@@ -19,8 +19,8 @@ $card--epic--body--background: #cbc8ff;
 $card--epic--header--background: #8f81ff;
 $card--epic--stars--background: mix($card--epic--body--background, $card--epic--header--background, 60%);
 
-$card--legendary--body--background: #ffdfc2;
-$card--legendary--header--background: #e4964a;
+$card--legendary--body--background: #ecc7a5;
+$card--legendary--header--background: #d08231;
 $card--legendary--stars--background: mix($card--legendary--body--background, $card--legendary--header--background, 60%);
 
 .gqq-card {
@@ -57,7 +57,7 @@ $card--legendary--stars--background: mix($card--legendary--body--background, $ca
         background: $card--header--background;
         padding: 0.5rem 1.5rem;
         border-radius: 1rem;
-        font-size: 1.6rem;
+        font-size: 1.75rem;
         font-family: 'Londrina Solid';
         text-align: center;
         white-space: nowrap;
@@ -104,12 +104,12 @@ $card--legendary--stars--background: mix($card--legendary--body--background, $ca
     }
 
     .card__image {
-        width: 135px;
+        width: 100px;
         margin: 0 auto;
         display: flex;
         position: relative;
         z-index: 2;
-        background: linear-gradient(to bottom, $card--stars--background, $card--body--background);
+        background: linear-gradient(to bottom, $card--header--background, $card--body--background);
         padding: 0.25rem;
         border-radius: 1rem;
 
@@ -127,7 +127,7 @@ $card--legendary--stars--background: mix($card--legendary--body--background, $ca
         color: white;
         border-radius: 2rem 2rem 0 0;
         padding: 0.35rem 1.75rem;
-        width: calc(100% - 1.5rem);
+        width: calc(100% - 2.5rem);
         margin: 0.5rem auto 0;
         text-align: center;
         position: relative;
@@ -163,8 +163,24 @@ $card--legendary--stars--background: mix($card--legendary--body--background, $ca
         overflow: hidden;
         padding: 0;
         margin-top: 0.5rem;
-        padding: 0.75rem 0.75rem 1.75rem;
+        padding: 0.75rem 0.75rem 2.1rem;
         z-index: 2;
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-justify {
+            text-align: justify;
+        }
     }
 
     .card__tab {
@@ -172,7 +188,7 @@ $card--legendary--stars--background: mix($card--legendary--body--background, $ca
     
         &::before {
             content: '';
-            height: 23.5rem;
+            height: 24.5rem;
             width: 100%;
             position: absolute;
             left: 0;
@@ -393,7 +409,7 @@ $card--legendary--stars--background: mix($card--legendary--body--background, $ca
     }
 
     .card__image {
-        background: linear-gradient(to bottom, $card--uncommon--stars--background, $card--uncommon--body--background);
+        background: linear-gradient(to bottom, $card--uncommon--header--background, $card--uncommon--body--background);
     }
 
     .card__tags {
@@ -433,7 +449,7 @@ $card--legendary--stars--background: mix($card--legendary--body--background, $ca
     }
 
     .card__image {
-        background: linear-gradient(to bottom, $card--rare--stars--background, $card--rare--body--background);
+        background: linear-gradient(to bottom, $card--rare--header--background, $card--rare--body--background);
     }
 
     .card__tags {
@@ -473,7 +489,7 @@ $card--legendary--stars--background: mix($card--legendary--body--background, $ca
     }
 
     .card__image {
-        background: linear-gradient(to bottom, $card--epic--stars--background, $card--epic--body--background);
+        background: linear-gradient(to bottom, $card--epic--header--background, $card--epic--body--background);
     }
 
     .card__tags {
@@ -513,7 +529,7 @@ $card--legendary--stars--background: mix($card--legendary--body--background, $ca
     }
 
     .card__image {
-        background: linear-gradient(to bottom, $card--legendary--stars--background, $card--legendary--body--background);
+        background: linear-gradient(to bottom, $card--legendary--header--background, $card--legendary--body--background);
     }
 
     .card__tags {

@@ -21,11 +21,12 @@ $sheet--highlight: #6c20a9;
         font-size: 2.25em;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-start;
+        height: 4.5rem;
         line-height: 0.8;
         text-align: center;
-        margin-bottom: 2rem;
-        line-height: 0.9;
+        margin-bottom: 1rem;
+        line-height: 0.85;
 
         span:first-of-type {
             letter-spacing: 1.5px;
@@ -40,7 +41,8 @@ $sheet--highlight: #6c20a9;
             padding-top: 0.125rem;
             padding-bottom: 0.125rem;
             font-weight: 300;
-            border-radius: 0.25rem;
+            border-radius: 1rem;
+            margin-top: 2px;
         }
     }
 

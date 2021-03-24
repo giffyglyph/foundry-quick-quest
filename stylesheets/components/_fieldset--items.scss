@@ -1,0 +1,258 @@
+$items--row--background--odd: mix(#dde0eb, #b1b5ca, 70%);
+$items--row--background--even: mix(#dde0eb, #b1b5ca, 60%);
+
+.gqq-sheet .fieldset--items {
+
+    .fieldset__body {
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        margin: 0;
+    }
+
+    table {
+        font-family: 'Source Sans Pro';
+        border: none;
+        margin: 0;
+        background: none;
+
+        thead {
+            background: none;
+            border: none;
+
+            tr {
+                text-shadow: none;
+                text-transform: uppercase;
+                font-size: 12px;
+                background: black;
+                color: white;
+                border-radius: 1rem;
+                overflow: hidden;
+            }
+        }
+
+        tbody {
+            font-size: 16px;
+        }
+
+        thead tr,
+        tbody tr {
+            display: flex;
+            align-items: center;
+        }
+
+        tbody tr {
+            background: $items--row--background--odd;
+            margin-top: 1px;
+
+            &:nth-of-type(even) {
+                background: $items--row--background--even;
+            }
+
+            &:first-child {
+                margin-top: 0.25rem;
+            }
+        }
+
+        input {
+            padding: 0;
+        }
+
+        th,
+        td {
+            padding: 0.25rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+    .item.item--hidden {
+
+        > *:not(.item__actions) {
+            opacity: 0.25;
+            font-weight: normal;
+        }
+
+        .item__action--toggle-hidden {
+            color: black;
+        }
+    }
+
+    .item__icon img {
+        border: none;
+        background: black;
+        width: 100%;
+        display: block;
+        border-radius: 4px;
+    }
+
+    .item__title input {
+        border: none;
+        background: none;
+        font-weight: 600;
+
+        &:focus {
+            box-shadow: 0 0 0 3px $sheet--highlight;
+        }
+    }
+
+    .item__actions {
+        
+        .item__action {
+            color: lighten($character--inventory--background, 5%);
+            background: darken($character--inventory--background, 5%);
+            border-radius: 1rem;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            flex-shrink: 0;
+            height: 1.5rem;
+            width: 1.5rem;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+
+            &:focus,
+            &:hover {
+                background: $sheet--highlight;
+                color: white;
+                box-shadow: none;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            i {
+                margin: 0;
+            }
+        }
+    }
+
+    .item--rarity--uncommon {
+
+        .item__title input {
+            color: #299821;
+        }
+    }
+
+    .item--rarity--rare {
+
+        .item__title input {
+            color: #285fbf;
+        }
+    }
+
+    .item--rarity--epic {
+
+        .item__title input {
+            color: #8332ad;
+        }
+    }
+
+    .item--rarity--legendary {
+
+        .item__title input {
+            color: #ad5700;
+        }
+    }
+
+    .items {
+
+        .item:first-child {
+            border-top-right-radius: 1rem;
+        }
+
+        .item:last-child {
+            border-bottom-right-radius: 1rem;
+        }
+
+        tr.empty {
+            border-radius: 1rem;
+            height: 2.2rem;
+
+            td {
+                width: 100%;
+                text-align: center;
+                font-weight: 500;
+                font-size: smaller;
+                padding: 0;
+            }
+        }
+    }
+    
+    .fieldset--items__controls {
+        display: flex;
+        margin-top: 0.5rem;
+    }
+
+    .fieldset--items__details {
+        background: white;
+        border-radius: 1rem 0 0 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        font-family: 'Source Sans Pro';
+        font-size: 1.25rem;
+        width: 100%;
+        font-weight: bold;
+
+        i {
+            width: 1.25rem;
+            height: 1.25rem;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 0.25rem;
+            border-radius: 1rem;
+            background: black;
+            color: white;
+            font-size: 0.6em;
+        }
+
+        > * {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        > * + * {
+            margin-left: 1rem;
+        }
+
+        + .item__action--add {
+            margin-left: -1rem;
+        }
+    }
+
+    .item__action--add {
+        background: black;
+        color: white;
+        border-radius: 1rem;
+        padding: 0.25rem 1.5rem;
+        text-align: center;
+        width: auto;
+        flex-grow: 0;
+        border: none;
+        margin: 0;
+        font-family: 'Londrina Solid';
+        text-transform: uppercase;
+        font-size: 1rem;
+        white-space: nowrap;
+        line-height: 1.5;
+
+        &:focus,
+        &:hover {
+            outline: none;
+            box-shadow: none;
+            background: $sheet--highlight;
+            color: white;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

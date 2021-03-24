@@ -1,8 +1,5 @@
-/**
- * A helper Dialog subclass for completing a long rest
- * @extends {Dialog}
- */
- export default class CharacterRollDialog extends Dialog {
+export default class CharacterRollDialog extends Dialog {
+
 	constructor(actor, dialogData = {}, options = {}) {
 		super(dialogData, options);
         this.actor = actor;
@@ -69,19 +66,19 @@
 				buttons: {
                     advantage: {
 						icon: '<i class="fas fa-plus"></i>',
-						label: "Advantage",
+						label: game.i18n.format('common.advantage'),
 						class: "btn-advantage",
 						callback: (html) => resolve(_getFormData(html, "advantage"))
 					},
 					roll: {
 						icon: '<i class="fas fa-dice-d20"></i>',
-						label: "Roll",
+						label: game.i18n.format('common.roll'),
 						class: "btn-primary btn-roll",
 						callback: (html) => resolve(_getFormData(html, "normal"))
 					},
 					disadvantage: {
 						icon: '<i class="fas fa-minus"></i>',
-						label: "Disadvantage",
+						label: game.i18n.format('common.disadvantage'),
 						class: "btn-disadvantage",
 						callback: (html) => resolve(_getFormData(html, "disadvantage"))
 					},				

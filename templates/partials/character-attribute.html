@@ -6,6 +6,6 @@
         <button class="attribute__tag">{{localize (concat 'common.' code '.code')}}</button>
         <label class="attribute__title">{{localize (concat 'common.' code '.name')}}</label>
     </div>
-    <input class="attribute__value" name="data.attributes.{{code}}.base" type="number" value="{{base}}" title="{{#each sources as | source id |}}{{source}}{{#unless @last}},&#010;{{/unless}}{{/each}}"/>
+    <input class="attribute__value" name="data.attributes.{{code}}.base" type="number" value="{{base}}" title="{{#each sources as | source id |}}{{localize 'sheet.character.source' value=source.value source=source.source}}{{#unless @last}},&#010;{{/unless}}{{/each}}"/>
     <span class="attribute__total attribute__total--{{class}}">{{total}}</span>
 </div>

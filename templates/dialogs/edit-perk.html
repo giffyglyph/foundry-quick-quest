@@ -1,10 +1,10 @@
-<form id="edit-item" class="gqq-dialog gqq-dialog--edit-item" onsubmit="event.preventDefault();">
+<form id="edit-perk" class="gqq-dialog gqq-dialog--edit-item gqq-dialog--edit-perk" onsubmit="event.preventDefault();">
     <div class="dialog__body">
-        <div class="dialog__title">{{localize 'dialog.edit_item.title'}}</div>
+        <div class="dialog__title">{{localize 'dialog.edit_perk.title'}}</div>
         <nav class="dialog__tabs__nav" data-group="primary">
-            <button type="button" data-tab="core" class="active">{{localize 'dialog.edit_item.tab.core'}}</button>
-            <button type="button" data-tab="description">{{localize 'dialog.edit_item.tab.description'}}</button>
-            <button type="button" data-tab="extra">{{localize 'dialog.edit_item.tab.extra'}}</button>
+            <button type="button" data-tab="core" class="active">{{localize 'dialog.edit_perk.tab.core'}}</button>
+            <button type="button" data-tab="description">{{localize 'dialog.edit_perk.tab.description'}}</button>
+            <button type="button" data-tab="extra">{{localize 'dialog.edit_perk.tab.extra'}}</button>
         </nav>
         <div class="dialog__tabs__body">
             <div class="tab tab--core" data-group="primary" data-tab="core">
@@ -55,49 +55,6 @@
                         <button type="button" data-action="add-tag"><i class="fas fa-plus-circle"></i> {{localize 'dialog.edit_item.add_tag'}}</button>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="form-group__header"><i class="fa fa-fw fa-weight-hanging"></i> {{localize 'common.bulk'}}</label>
-                    <div class="form-group__body">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <input type="checkbox" name="data.canHaveBulk" data-dtype="Boolean" {{checked item.data.canHaveBulk}}/>
-                            </div>
-                            <input name="data.bulk" type="number" value="{{item.data.bulk}}"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-group__header"><i class="fa fa-fw fa-coins"></i> {{localize 'common.value'}}</label>
-                    <div class="form-group__body">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <input type="checkbox" name="data.canHaveValue" data-dtype="Boolean" {{checked item.data.canHaveValue}}/>
-                            </div>
-                            <input name="data.value" type="number" value="{{item.data.value}}"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-group__header"><i class="fa fa-fw fa-bolt"></i> {{localize 'common.charges'}}</label>
-                    <div class="form-group__body">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <input type="checkbox" name="data.canHaveCharges" data-dtype="Boolean" {{checked item.data.canHaveCharges}}/>
-                            </div>
-                            <input name="data.charges" type="number" value="{{item.data.charges}}"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-group__header"><i class="fa fa-fw fa-hand-paper"></i> {{localize 'common.equippable'}}</label>
-                    <div class="form-group__body">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <input type="checkbox" name="data.canBeEquipped" data-dtype="Boolean" {{checked item.data.canBeEquipped}}/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="tab tab--description" data-group="primary" data-tab="description">
                 <div class="form-group form-group--modifiers">
@@ -142,29 +99,29 @@
                     </div>
                 </div>
                 <div class="form-group form-group--column form-group--description">
-                    <label class="form-group__header"><i class="fa fa-fw fa-sticky-note"></i> {{localize 'dialog.edit_item.description'}}</label>
+                    <label class="form-group__header"><i class="fa fa-fw fa-sticky-note"></i> {{localize 'dialog.edit_perk.description'}}</label>
                     <div class="form-group__body">
-                        <textarea name="data.descriptions.simple" rows="10">{{item.data.descriptions.simple}}</textarea>
+                        <textarea name="data.descriptions.primary.main" rows="5">{{item.data.descriptions.primary.main}}</textarea>
                     </div>
                 </div>
                 <div class="form-group form-group--column">
-                    <label class="form-group__header"><i class="fa fa-fw fa-quote-left"></i> {{localize 'dialog.edit_item.flavor'}}</label>
+                    <label class="form-group__header"><i class="fa fa-fw fa-quote-left"></i> {{localize 'dialog.edit_perk.flavor'}}</label>
                     <div class="form-group__body">
-                        <textarea name="data.descriptions.simpleFlavor" rows="4">{{item.data.descriptions.simpleFlavor}}</textarea>
+                        <textarea name="data.descriptions.primary.flavor" rows="4">{{item.data.descriptions.primary.flavor}}</textarea>
                     </div>
                 </div>
             </div>
             <div class="tab tab--extra" data-group="primary" data-tab="extra">
                 <div class="form-group form-group--column form-group--description">
-                    <label class="form-group__header"><i class="fa fa-fw fa-sticky-note"></i> {{localize 'dialog.edit_item.description'}}</label>
+                    <label class="form-group__header"><i class="fa fa-fw fa-sticky-note"></i> {{localize 'dialog.edit_perk.description'}}</label>
                     <div class="form-group__body">
-                        <textarea name="data.descriptions.expanded" rows="10">{{item.data.descriptions.expanded}}</textarea>
+                        <textarea name="data.descriptions.secondary.main" rows="10">{{item.data.descriptions.secondary.main}}</textarea>
                     </div>
                 </div>
                 <div class="form-group form-group--column">
-                    <label class="form-group__header"><i class="fa fa-fw fa-quote-left"></i> {{localize 'dialog.edit_item.flavor'}}</label>
+                    <label class="form-group__header"><i class="fa fa-fw fa-quote-left"></i> {{localize 'dialog.edit_perk.flavor'}}</label>
                     <div class="form-group__body">
-                        <textarea name="data.descriptions.expandedFlavor" rows="4">{{item.data.descriptions.expandedFlavor}}</textarea>
+                        <textarea name="data.descriptions.secondary.flavor" rows="4">{{item.data.descriptions.secondary.flavor}}</textarea>
                     </div>
                 </div>
             </div>

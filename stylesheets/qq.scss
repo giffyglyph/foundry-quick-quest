@@ -13,9 +13,14 @@
 
 @import 'dialogs/dialog--character-roll';
 @import 'dialogs/dialog--edit-item';
+@import 'dialogs/dialog--edit-perk';
+@import 'dialogs/dialog--edit-resource';
 
 @import 'sheets/sheet--character';
 
-@import 'cards/card--item';
+@import 'cards/card--perk';
+@import 'cards/card--resource';
 
 @import 'windows/window-gqq';
+
+@import 'components/fieldset--items';

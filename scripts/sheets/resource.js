@@ -1,6 +1,6 @@
-import EditItemDialog from "../dialogs/edit-item.js";
+import EditResourceDialog from "../dialogs/edit-resource.js";
 
-export default class ItemSheetItem extends ItemSheet {
+export default class ItemSheetResource extends ItemSheet {
 
 	/** @override */
 	static get defaultOptions() {
@@ -10,7 +10,7 @@ export default class ItemSheetItem extends ItemSheet {
 				classes: ["window-gqq"],
 				height: 601,
 				width: 350,
-				template: 'systems/quickquest/templates/sheets/item.html',
+				template: 'systems/quickquest/templates/sheets/resource.html',
 				resizable: false,
 				tabs: [{navSelector: ".card__tabs__nav", contentSelector: ".card__tabs__body", initial: "front"}]
 			}
@@ -26,11 +26,11 @@ export default class ItemSheetItem extends ItemSheet {
     }
 
 	activateListeners(html) {
-		html.find('button[data-action="edit"]').click(this._onItemEdit.bind(this));
-		html.find('.item__equipped').click(ev => this._onToggleEquipped(ev));
-		html.find('.item__extra--quantity input').change(ev => this._onUpdateQuantity(ev.target.value));
-		html.find('.item__extra--value input').change(ev => this._onUpdateValue(ev.target.value));
-		html.find('.item__extra--bulk input').change(ev => this._onUpdateBulk(ev.target.value));
+		html.find('button[data-action="edit"]').click(this._onResourceEdit.bind(this));
+		html.find('.resource__equipped').click(ev => this._onToggleEquipped(ev));
+		html.find('.resource__extra--quantity input').change(ev => this._onUpdateQuantity(ev.target.value));
+		html.find('.resource__extra--value input').change(ev => this._onUpdateValue(ev.target.value));
+		html.find('.resource__extra--bulk input').change(ev => this._onUpdateBulk(ev.target.value));
 		super.activateListeners(html);
 	}
 
@@ -58,10 +58,10 @@ export default class ItemSheetItem extends ItemSheet {
 		});
 	}
 
-	async _onItemEdit(event) {
+	async _onResourceEdit(event) {
 		event.preventDefault();
 		try {
-			let form = await EditItemDialog.editItemDialog({item: this.item.data});
+			let form = await EditResourceDialog.editResourceDialog({item: this.item.data});
 			await this.item.update(form);
 		} catch(err) {
 			return;
