@@ -13,15 +13,13 @@
                 <div class="card__image">
                     <img src="{{item.img}}" class="editable" data-edit="img"/>
                 </div>
-                <div class="card__tags" title="{{#each data.tags as | tag id |}}{{tag}}{{#unless @last}}, {{/unless}}{{/each}}">
-                    {{#if data.tags}}
+                {{#if data.tags}}
+                    <div class="card__tags" title="{{#each data.tags as | tag id |}}{{tag}}{{#unless @last}}, {{/unless}}{{/each}}">
                         {{#each data.tags as | tag id |}}
                             <span class="card__tag">{{tag}}</span>
                         {{/each}}
-                    {{else}}
-                        &nbsp;
-                    {{/if}}
-                </div>
+                    </div>
+                {{/if}}
                 <div class="card__details">
                     {{#if data.modifiers.length}}
                         <div class="perk__modifiers">
