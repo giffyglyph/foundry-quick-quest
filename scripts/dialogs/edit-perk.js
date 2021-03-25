@@ -28,7 +28,7 @@ export default class EditPerkDialog extends Dialog {
 	/** @override */
 	activateListeners(html) {
 		super.activateListeners(html);
-		html.find('[data-action="set-icon"]').click(ev => EditItem._onEditIcon(ev));
+		html.find('[data-action="set-icon"]').click(ev => EditItem._onEditIcon(ev, this.item.img));
 		html.find('[data-action="add-tag"]').click(ev => EditItem._onAddTag(html));
 		html.find('[data-action="add-modifier"]').click(ev => EditItem._onAddModifier(html));
 		html.find('.tags').click(ev => EditItem._onClickTags(ev));
