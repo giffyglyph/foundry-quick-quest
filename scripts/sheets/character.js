@@ -102,45 +102,43 @@ export default class ActorSheetCharacter extends ActorSheet {
 		let preselectedAttribute = event.currentTarget.closest(".attribute") ? event.currentTarget.closest(".attribute").getAttribute("data-attribute") : null;
 		try {
 			let form = await CharacterRollDialog.characterRollDialog({preselectedAttribute: preselectedAttribute});
-			if (form.attribute || form.archetype) {
-				let rollParts = [];
-				let messageParts = {
-					attribute: null,
-					archetype: null,
-					advantage: null
-				};
-				if (form.attribute) {
-					rollParts.push(this.actor.data.data.attributes[form.attribute].total);
-					messageParts.attribute = game.i18n.format(`common.${form.attribute}.name`);
-				}
-				if (form.archetype) {
-					rollParts.push(this.actor.data.data.archetypes[form.archetype].total);
-					messageParts.archetype = game.i18n.format(`common.${form.archetype}.name`);
-				}
-				if (form.bonus) {
-					rollParts.push(form.bonus);
-				}
-				switch (form.advantage) {
-					case "advantage":
-						rollParts.unshift("2d20kh");
-						messageParts.advantage = game.i18n.format('common.advantage');
-						break;
-					case "disadvantage":
-						rollParts.unshift("2d20kl");
-						messageParts.advantage = game.i18n.format('common.disadvantage');
-						break;
-					default: 
-						rollParts.unshift("1d20");
-						break;
-				}
-				const roll = new Roll(rollParts.join(" + ")).roll();
-				roll.toMessage({
-					speaker: ChatMessage.getSpeaker({actor: this.actor}),
-					flavor: ActorSheetCharacter._getMessageFromParts(messageParts),
-					messageData: {"flags.dnd5e.roll": {type: "other", itemId: this.id }},
-					rollMode: form.mode
-				});
+			let rollParts = [];
+			let messageParts = {
+				attribute: null,
+				archetype: null,
+				advantage: null
+			};
+			if (form.attribute) {
+				rollParts.push(this.actor.data.data.attributes[form.attribute].total);
+				messageParts.attribute = game.i18n.format(`common.${form.attribute}.name`);
 			}
+			if (form.archetype) {
+				rollParts.push(this.actor.data.data.archetypes[form.archetype].total);
+				messageParts.archetype = game.i18n.format(`common.${form.archetype}.name`);
+			}
+			if (form.bonus) {
+				rollParts.push(form.bonus);
+			}
+			switch (form.advantage) {
+				case "advantage":
+					rollParts.unshift("2d20kh");
+					messageParts.advantage = game.i18n.format('common.advantage');
+					break;
+				case "disadvantage":
+					rollParts.unshift("2d20kl");
+					messageParts.advantage = game.i18n.format('common.disadvantage');
+					break;
+				default: 
+					rollParts.unshift("1d20");
+					break;
+			}
+			const roll = new Roll(rollParts.join(" + ")).roll();
+			roll.toMessage({
+			  speaker: ChatMessage.getSpeaker({actor: this.actor}),
+			  flavor: ActorSheetCharacter._getMessageFromParts(messageParts),
+			  messageData: {"flags.dnd5e.roll": {type: "other", itemId: this.id }},
+			  rollMode: form.mode
+			});
 		} catch(err) {
 			console.log(err);
 			return;
