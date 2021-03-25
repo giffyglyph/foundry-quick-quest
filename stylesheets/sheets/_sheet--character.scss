@@ -65,6 +65,7 @@ $character--inventory--border--color: $character--header--background;
 
         .navigation {
             flex-grow: 1;
+            overflow-y: auto;
         }
 
         .item {
@@ -82,13 +83,14 @@ $character--inventory--border--color: $character--header--background;
             justify-content: flex-start;
             align-items: center;
             counter-increment: nav;
-            padding-left: 1.75rem;
+            padding-left: 1.5rem;
             margin-left: 1rem;
 
             &::before {
                 content: counter(nav);
                 position: absolute;
                 left: -1rem;
+                top: 0.5rem;
                 height: 2rem;
                 width: 2rem;
                 background: #000000;
@@ -112,6 +114,11 @@ $character--inventory--border--color: $character--header--background;
             &.active {
                 background: $character--body--background;
             }
+
+            span {
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
 
         .character-action--roll {
@@ -124,6 +131,8 @@ $character--inventory--border--color: $character--header--background;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-shrink: 0;
+            margin-top: 1rem;
 
             &:hover {
                 cursor: pointer;

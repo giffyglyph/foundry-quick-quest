@@ -1169,7 +1169,8 @@
   .gqq-sheet--character .character__nav .navigation {
     width: 100%; }
   .gqq-sheet--character .character__nav .navigation {
-    flex-grow: 1; }
+    flex-grow: 1;
+    overflow-y: auto; }
   .gqq-sheet--character .character__nav .item {
     display: block;
     background: #a2a7c0;
@@ -1185,12 +1186,13 @@
     justify-content: flex-start;
     align-items: center;
     counter-increment: nav;
-    padding-left: 1.75rem;
+    padding-left: 1.5rem;
     margin-left: 1rem; }
     .gqq-sheet--character .character__nav .item::before {
       content: counter(nav);
       position: absolute;
       left: -1rem;
+      top: 0.5rem;
       height: 2rem;
       width: 2rem;
       background: #000000;
@@ -1206,6 +1208,9 @@
       text-shadow: none; }
     .gqq-sheet--character .character__nav .item.active {
       background: #dde0eb; }
+    .gqq-sheet--character .character__nav .item span {
+      overflow: hidden;
+      text-overflow: ellipsis; }
   .gqq-sheet--character .character__nav .character-action--roll {
     background: none;
     color: white;
@@ -1215,7 +1220,9 @@
     width: 6rem;
     display: flex;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    flex-shrink: 0;
+    margin-top: 1rem; }
     .gqq-sheet--character .character__nav .character-action--roll:hover {
       cursor: pointer; }
       .gqq-sheet--character .character__nav .character-action--roll:hover i {
