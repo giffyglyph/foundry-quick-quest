@@ -64,11 +64,11 @@ export default class CharacterRollDialog extends Dialog {
 				title: `Make a Roll`,
                 preselectedAttribute: preselectedAttribute,
 				buttons: {
-                    advantage: {
-						icon: '<i class="fas fa-plus"></i>',
-						label: game.i18n.format('common.advantage'),
-						class: "btn-advantage",
-						callback: (html) => resolve(_getFormData(html, "advantage"))
+                    disadvantage: {
+						icon: '<i class="fas fa-arrow-down"></i>',
+						label: game.i18n.format('common.disadvantage'),
+						class: "btn-disadvantage",
+						callback: (html) => resolve(_getFormData(html, "disadvantage"))
 					},
 					roll: {
 						icon: '<i class="fas fa-dice-d20"></i>',
@@ -76,12 +76,12 @@ export default class CharacterRollDialog extends Dialog {
 						class: "btn-primary btn-roll",
 						callback: (html) => resolve(_getFormData(html, "normal"))
 					},
-					disadvantage: {
-						icon: '<i class="fas fa-minus"></i>',
-						label: game.i18n.format('common.disadvantage'),
-						class: "btn-disadvantage",
-						callback: (html) => resolve(_getFormData(html, "disadvantage"))
-					},				
+					advantage: {
+						icon: '<i class="fas fa-arrow-up"></i>',
+						label: game.i18n.format('common.advantage'),
+						class: "btn-advantage",
+						callback: (html) => resolve(_getFormData(html, "advantage"))
+					}
 				},
 				close: reject
 			});
