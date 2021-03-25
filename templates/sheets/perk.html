@@ -11,7 +11,7 @@
         <div class="card__tabs__body perk__body">
             <div class="card__tab perk__tab--front" data-group="primary" data-tab="front">
                 <div class="card__image">
-                    <img src="{{item.img}}" data-edit="img"/>
+                    <img src="{{item.img}}" class="editable" data-edit="img"/>
                 </div>
                 <div class="card__tags" title="{{#each data.tags as | tag id |}}{{tag}}{{#unless @last}}, {{/unless}}{{/each}}">
                     {{#if data.tags}}

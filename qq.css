@@ -94,6 +94,11 @@
   font-weight: 900;
   font-style: italic; }
 
+.gqq-card .editable,
+.gqq-dialog .editable,
+.gqq-sheet .editable {
+  cursor: pointer; }
+
 .gqq-sheet .attributes,
 .gqq-dialog .attributes {
   display: flex;

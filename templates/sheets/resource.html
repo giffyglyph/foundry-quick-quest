@@ -11,7 +11,7 @@
         <div class="card__tabs__body resource__body">
             <div class="card__tab resource__tab--front" data-group="primary" data-tab="front">
                 <div class="card__image">
-                    <img src="{{item.img}}" data-edit="img"/>
+                    <img src="{{item.img}}" class="editable" data-edit="img"/>
                     {{#if data.canBeEquipped}}
                         <div class="resource__equipped {{#if data.isEquipped}}equipped{{/if}}" title="{{#if data.isEquipped}}Equipped{{else}}Unequipped{{/if}}">
                             <i class="fas fa-shield-alt"></i>
