@@ -101,8 +101,8 @@ export default class ActorSheetCharacter extends ActorSheet {
 		event.preventDefault();
 		let preselectedAttribute = event.currentTarget.closest(".attribute") ? event.currentTarget.closest(".attribute").getAttribute("data-attribute") : null;
 		try {
+			let form = await CharacterRollDialog.characterRollDialog({preselectedAttribute: preselectedAttribute});
 			if (form.attribute || form.archetype) {
-				let form = await CharacterRollDialog.characterRollDialog({preselectedAttribute: preselectedAttribute});
 				let rollParts = [];
 				let messageParts = {
 					attribute: null,
