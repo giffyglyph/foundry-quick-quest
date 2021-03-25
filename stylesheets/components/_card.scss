@@ -261,7 +261,7 @@ $card--legendary--stars--background: mix($card--legendary--body--background, $ca
         height: 1.75rem;
         min-width: 8rem;
         margin: -1.75rem auto 0;
-        padding: 0 1rem;
+        padding: 0 2rem;
         border-radius: 2rem 2rem 0 0;
         text-align: center;
         text-transform: uppercase;
@@ -277,6 +277,13 @@ $card--legendary--stars--background: mix($card--legendary--body--background, $ca
         flex-shrink: 0;
         flex-grow: 0;
         z-index: 3;
+        max-width: 17rem;
+
+        span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
     }
 
     .card__footer {

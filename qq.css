@@ -425,7 +425,7 @@
     height: 1.75rem;
     min-width: 8rem;
     margin: -1.75rem auto 0;
-    padding: 0 1rem;
+    padding: 0 2rem;
     border-radius: 2rem 2rem 0 0;
     text-align: center;
     text-transform: uppercase;
@@ -440,7 +440,12 @@
     border-bottom-width: 0;
     flex-shrink: 0;
     flex-grow: 0;
-    z-index: 3; }
+    z-index: 3;
+    max-width: 17rem; }
+    .gqq-card .card__type span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
   .gqq-card .card__footer {
     margin-top: 0.5rem;
     display: flex;
