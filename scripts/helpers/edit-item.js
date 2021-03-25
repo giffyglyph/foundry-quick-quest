@@ -95,17 +95,14 @@ export default class EditItem {
       	`);
 	}
 
-	static _onEditIcon(e) {
+	static _onEditIcon(e, img) {
 		new FilePicker({
 			type: "image",
-			current: this.item.img,
+			current: img,
 			callback: path => {
 				e.currentTarget.src = path;
-				e.currentTarget.closest(".image__icon").querySelector("input[type='hidden']").value = path;
-			},
-			top: this.position.top + 40,
-			left: this.position.left + 10
-		}).browse(this.item.img);
+			}
+		}).browse(img);
 	}
 
     static _getTags(html) {
