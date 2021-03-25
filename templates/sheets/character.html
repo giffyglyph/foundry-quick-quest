@@ -190,7 +190,7 @@
                                             <td class="item__title">
                                                 <input data-field="name" type="text" value="{{item.name}}" title="{{item.name}}"/>
                                             </td>
-                                            <td class="perk__modifiers" title="{{#each item.data.modifiers as | modifier id |}}{{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}{{#unless @last}}, {{/unless}}{{/each}}">
+                                            <td class="perk__modifiers" title="{{#each item.data.modifiers as | modifier id |}}{{numberFormat modifier.value decimals=0 sign=true}} {{uppercase modifier.type}}{{#unless @last}}, {{/unless}}{{/each}}">
                                                 {{#each item.data.modifiers as | modifier id |}}{{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}{{#unless @last}}, {{/unless}}{{/each}}
                                             </td>
                                             <td class="item__actions">
@@ -272,7 +272,7 @@
                                                     </button>
                                                 {{/if}}
                                             </td>
-                                            <td class="resource__modifiers" title="{{#each item.data.modifiers as | modifier id |}}{{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}{{#unless @last}}, {{/unless}}{{/each}}">
+                                            <td class="resource__modifiers" title="{{#each item.data.modifiers as | modifier id |}}{{numberFormat modifier.value decimals=0 sign=true}} {{uppercase modifier.type}}{{#unless @last}}, {{/unless}}{{/each}}">
                                                 {{#each item.data.modifiers as | modifier id |}}{{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}{{#unless @last}}, {{/unless}}{{/each}}
                                             </td>
                                             <td class="item__actions">

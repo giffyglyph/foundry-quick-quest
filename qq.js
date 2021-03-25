@@ -42,6 +42,9 @@ Hooks.once("init", function() {
 	Handlebars.registerHelper('strlen', function(str) {
 		return String(str).length;
 	});
+	Handlebars.registerHelper('uppercase', function(str) {
+		return String(str).toUpperCase();
+	});
 
 	preloadHandlebarsTemplates();
 
