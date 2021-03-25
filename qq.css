@@ -1969,7 +1969,8 @@
   background: black;
   width: 100%;
   display: block;
-  border-radius: 4px; }
+  border-radius: 4px;
+  cursor: pointer; }
 
 .gqq-sheet .fieldset--items .item__title input {
   border: none;
