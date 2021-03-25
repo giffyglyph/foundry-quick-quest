@@ -301,6 +301,7 @@ $character--inventory--border--color: $character--header--background;
         img {
             border: none;
             border-radius: 0.75rem;
+            background: black;
 
             &:focus {
                 box-shadow: 0 0 0 3px $sheet--highlight;
