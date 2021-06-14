@@ -1,4 +1,4 @@
-![Quick Quest Social Banner](./img/quick-quest-banner.png)
+![Quick Quest Social Banner](./img/quick-quest-banner.jpg)
 
 # Foundry Quick Quest
 
