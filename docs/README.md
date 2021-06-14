@@ -9,6 +9,9 @@
 
 Want to play [Giffyglyph's Quick Quest](https://github.com/giffyglyph/giffyglyphs-quick-quest) in [Foundry VTT](https://foundryvtt.com/)? No worries—**Foundry Quick Quest** has you covered! Start playing a rules-lite RPG in minutes with a fully-featured character sheet, item cards, and perk system.
 
+* Install the System: https://raw.githubusercontent.com/giffyglyph/foundry-quick-quest/master/system.json
+* [Read the Changelog](https://github.com/giffyglyph/foundry-quick-quest/blob/master/docs/CHANGELOG.md) 
+
 ## Features
 
 * A fully-featured character sheet.
